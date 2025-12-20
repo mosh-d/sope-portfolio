@@ -6,18 +6,19 @@ import { RoleContext } from "./store/role-context.jsx";
 // Components
 import NavDetailsLinks from "./components/NavDetailsLinks.jsx";
 import AboutSection from "./components/sections/AboutSection.jsx";
-import ExperienceSection from "./components/sections/ExperienceSection.jsx"
+import ExperienceSection from "./components/sections/ExperienceSection.jsx";
+import SkillsSection from "./components/sections/SkillsSection.jsx";
 
 // Icons
 import { GrLanguage } from "react-icons/gr";
 
 function App() {
   const [role, setRole] = useState("");
-  console.log("Role: ", role)
+  console.log("Role: ", role);
   const [section, setSection] = useState("about");
   console.log("Section: ", section);
   const [language, setLanguage] = useState("English");
-  console.log("Language: ", language)
+  console.log("Language: ", language);
 
   const dataIndex = useMemo(() => {
     if (role === "designer") return 0;
@@ -26,7 +27,9 @@ function App() {
   }, [role]);
 
   return (
-    <RoleContext.Provider value={{ role, setRole, dataIndex, section, setSection }}>
+    <RoleContext.Provider
+      value={{ role, setRole, dataIndex, section, setSection }}
+    >
       <div
         data-component="Language selector"
         className="flex absolute m-[1rem] gap-[1rem] items-end z-20"
@@ -77,13 +80,13 @@ function App() {
           <div className="flex">
             <NavDetailsLinks />
             <section className="flex justify-center items-center">
-              {
-                section === "about" ?
-                <AboutSection /> :
-                section === "experience" ?
-                <ExperienceSection /> :
-                undefined
-              }
+              {section === "about" ? (
+                <AboutSection />
+              ) : section === "experience" ? (
+                <ExperienceSection />
+              ) : section === "skills" ? (
+                <SkillsSection />
+              ) : undefined}
             </section>
           </div>
         )}

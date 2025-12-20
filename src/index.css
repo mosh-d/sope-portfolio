@@ -10,6 +10,7 @@
 
   /* Colors */
   --background-color: hsla(175, 10%, 14%, 1);
+  --background-color-2: hsla(334, 10%, 14%, 1);
   --text-color: hsla(175, 8%, 72%, 1);
   --emphasis-color: hsla(338, 85%, 47%, 1);
   --accent-color: hsla(175, 100%, 50%, 1);
@@ -22,6 +23,23 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Media Queries for font size */
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media only screen and (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+}
+@media only screen and (min-width: 122.5em) {
+  html {
+    font-size: 75%;
+  }
 }
 
 body {

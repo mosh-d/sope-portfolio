@@ -5,7 +5,8 @@ import { RoleContext } from "./store/role-context.jsx";
 
 // Components
 import NavDetailsLinks from "./components/NavDetailsLinks.jsx";
-import AboutSection from "./components/sections/AboutSection.jsx"
+import AboutSection from "./components/sections/AboutSection.jsx";
+import ExperienceSection from "./components/sections/ExperienceSection.jsx"
 
 // Icons
 import { GrLanguage } from "react-icons/gr";
@@ -79,6 +80,8 @@ function App() {
               {
                 section === "about" ?
                 <AboutSection /> :
+                section === "experience" ?
+                <ExperienceSection /> :
                 undefined
               }
             </section>

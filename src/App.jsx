@@ -5,6 +5,7 @@ import { RoleContext } from "./store/role-context.jsx";
 
 // Components
 import NavDetailsLinks from "./components/NavDetailsLinks.jsx";
+import AboutSection from "./components/sections/AboutSection.jsx"
 
 // Icons
 import { GrLanguage } from "react-icons/gr";
@@ -12,7 +13,7 @@ import { GrLanguage } from "react-icons/gr";
 function App() {
   const [role, setRole] = useState("");
   console.log("Role: ", role)
-  const [section, setSection] = useState("");
+  const [section, setSection] = useState("about");
   console.log("Section: ", section);
   const [language, setLanguage] = useState("English");
   console.log("Language: ", language)
@@ -75,7 +76,11 @@ function App() {
           <div className="flex">
             <NavDetailsLinks />
             <section className="flex justify-center items-center">
-              Engineer.
+              {
+                section === "about" ?
+                <AboutSection /> :
+                undefined
+              }
             </section>
           </div>
         )}

@@ -29,9 +29,9 @@ export default function NavDetailsLinks() {
           <li className={`${fonts.mainContent} cursor-pointer`} onClick={() => setSection("projects")}>PROJECTS</li>
         </ul>
       </nav>
-      <menu className="flex gap-[4.8rem]">
+      <menu className="flex gap-[4.8rem] items-center">
         <li><FaGithub size="3.5rem" color="var(--accent-color)" /></li>
-        <li><TiSocialLinkedinCircular size="3.5rem" color="var(--accent-color)" /></li>
+        <li><TiSocialLinkedinCircular size="4.5rem" color="var(--accent-color)" /></li>
         <li><IoLogoWhatsapp size="3.5rem" color="var(--accent-color)" /></li>
         <li><IoLogoBehance size="3.5rem" color="var(--accent-color)" /></li>
       </menu>

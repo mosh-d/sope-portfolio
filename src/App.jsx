@@ -58,8 +58,8 @@ function App() {
           </button>
         </menu>
       </div>
-      <header className="text-[color:var(--black-color)]/50 bg-[color:var(--white-color)] h-[70vh] min-h-[60rem]">
-        <h1 className={`${fonts.heroTitle} absolute z-10 mix-blend-multiply`}>Welcome to Sope's Portfolio</h1>
+      <header className="bg-[color:var(--white-color)] h-[70vh] min-h-[60rem] shadow-xl">
+        <h1 className={`${fonts.heroTitle} absolute z-10 mix-blend-difference whitespace-nowrap`}>Welcome to Sope's Portfolio</h1>
         <div className="flex h-[100%]">
           `{" "}
           <section
@@ -105,12 +105,12 @@ function App() {
                     <span className="text-[color:var(--emphasis-color)]">const</span> <span className="text-[color:var(--accent-color)]">SOPE</span> = <span className="text-amber-300">{"{"}</span>
                     <br />
                     &nbsp;&nbsp;<span className="text-[color:var(--text-color)]">frontEnd: 
-                      </span><span className="text-[color:var(--emphasis-color)]"> [</span>html5, CSS3, JavaScript, React, Next.js<span className="text-[color:var(--emphasis-color)]">]</span>,
+                      </span><span className="text-[color:var(--emphasis-color)]"> [</span>HTML, CSS, JavaScript, React, Next.js<span className="text-[color:var(--emphasis-color)]">]</span>,
                     <br />
                     &nbsp;&nbsp;<span className="text-[color:var(--text-color)]">backEnd:</span>
                     <span className="text-[color:var(--emphasis-color)]"> [</span>Node.js, Express.js, MongoDb, PostgreSQL<span className="text-[color:var(--emphasis-color)]">]</span>
                     <br />
-                    <span className="text-amber-300">{"{"}</span>;
+                    <span className="text-amber-300">{"}"}</span>;
                   </code>
                 </pre>
               </div>

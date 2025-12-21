@@ -59,7 +59,7 @@ function App() {
         </menu>
       </div>
       <header className="text-[color:var(--black-color)]/50 bg-[color:var(--white-color)] h-[70vh] min-h-[60rem]">
-        <h1 className={`${fonts.heroTitle} absolute z-10`}>Sope's Portfolio</h1>
+        <h1 className={`${fonts.heroTitle} absolute z-10 mix-blend-multiply`}>Welcome to Sope's Portfolio</h1>
         <div className="flex h-[100%]">
           `{" "}
           <section
@@ -99,7 +99,7 @@ function App() {
               <h2
                 className={`${fonts.mainHeading} text-[color:var(--white-color)]`}
               >{`<Engineer />`}</h2>
-              <div>
+              <div className={`${fonts.heroSmall}`}>
                 <pre>
                   <code>
                     <span className="text-[color:var(--emphasis-color)]">const</span> <span className="text-[color:var(--accent-color)]">SOPE</span> = <span className="text-amber-300">{"{"}</span>
@@ -118,11 +118,11 @@ function App() {
           </section>
         </div>
       </header>
-      <main className="p-[12rem]">
+      <main className="p-[12rem] h-[100vh] min-h-[80rem] overflow-hidden">
         {role && (
-          <div className="flex">
+          <div className="flex h-full items-start gap-[4rem]">
             <NavDetailsLinks />
-            <section className="flex justify-center items-center">
+            <section className="flex flex-col w-[60%] overflow-y-auto h-full">
               {section === "about" ? (
                 <AboutSection />
               ) : section === "experience" ? (
@@ -135,7 +135,7 @@ function App() {
         )}
         {role === "" ? (
           <section className="flex justify-center items-center">
-            Pick a side to begin.
+            <p className={`${fonts.initialText} text-[color:var(--text-color)]`}>Pick a side to begin.</p>
           </section>
         ) : undefined}
       </main>

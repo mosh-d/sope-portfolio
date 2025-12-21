@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { RoleContext } from "../../store/role-context";
+
 import sope from "../../utils/data";
+import fonts from "../../utils/fonts";
 
 export default function ExperienceSection() {
   const { dataIndex } = useContext(RoleContext);
@@ -10,23 +12,23 @@ export default function ExperienceSection() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full gap-[12rem]">
       {sope[dataIndex].experience.map((experienceBlock, index) => (
-        <div key={index} className="flex">
-          <div>{experienceBlock.duration}</div>
-          <div className="flex flex-col gap-[1.8rem]">
-            <h3>{experienceBlock.title}</h3>
-            <ol>
+        <div key={index} className="flex w-full">
+          <div className={`${fonts.mainContent} w-[30%]`}>{experienceBlock.duration}</div>
+          <div className={`${fonts.mainContent} flex flex-col gap-[1.8rem] w-[70%]`}>
+            <h3 className={`${fonts.jobTitle} `}>{experienceBlock.title}</h3>
+            <ul className="list-disc ml-6">
               {experienceBlock.descriptionPoints.map((point, pointIndex) => (
                 <li key={pointIndex}>{point}</li>
               ))}
-            </ol>
+            </ul>
             <p>
-              skillsApplied = [
+              <span className="text-[color:var(--accent-color)]">skillsApplied</span> = <span className="text-[color:var(--emphasis-color)]">[</span>
               {experienceBlock.tags.map((tag, tagIndex) => (
-                <span key={tagIndex}>{tag}, </span>
+                <span key={tagIndex} className="text-[color:var(--white-color)]">{tag}{tagIndex < experienceBlock.tags.length - 1 ? ", " : "" }</span>
               ))}
-              ]
+              <span className="text-[color:var(--emphasis-color)]">]</span>
             </p>
           </div>
         </div>

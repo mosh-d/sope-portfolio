@@ -152,6 +152,22 @@ const sope = [
         ],
       },
       {
+        duration: "Jun 2024 - Sep 2025",
+        title: "Lead Front-end Engineer at Totesphere (Part-time from May 2025)",
+        descriptionPoints: [
+          "Designed a high-fidelity, dynamic, and intuitive prototype for the Totesphere website (a website dedicated to providing grants for startup businesses) using Figma. Focused on maintaining brand identity while crafting interactive components that fell in line with color theory and design principles.",
+          "Continued to bring the website design to life with HTML, CSS, and JavaScript. Added dynamic components with the aid of event listeners, url manipulation, and other intuitive functions and methods.",
+          "Implemented API request for Google map data.",
+          "Optimized page loading, leading to an average load time of 2 seconds, down 50% from 4 seconds.",
+        ],
+        tags: [
+          "HTML",
+          "CSS",
+          "SCSS",
+          "JavaScript",
+        ],
+      },
+      {
         duration: "Sep 2022 - Jun 2023",
         title: "Software Engineer Trainee at ALX Africa",
         descriptionPoints: [

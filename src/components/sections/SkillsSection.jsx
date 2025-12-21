@@ -16,7 +16,16 @@ export default function SkillsSection() {
         </div>
       )}
 
-      {role === "designer" && <p>fish</p>}
+      {role === "designer" && (
+        <div className="flex flex-col">
+          {sope[0].skills.map((skill, index) => (
+            <div key={index} className="flex flex-col">
+              <div>{skill.title}</div>
+              <div>{skill.tags}</div>
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 }

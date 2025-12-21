@@ -25,6 +25,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  font-size: 62.5%; /* 62.5% of default 16px = 10px */
+}
+
 /* Media Queries for font size */
 @media only screen and (max-width: 75em) {
   html {
@@ -45,4 +49,16 @@
 body {
   font-family: var(--font-primary);
   background-color: var(--background-color);
+}
+
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+}
+
+.font-accent {
+  font-family: var(--font-accent);
 }

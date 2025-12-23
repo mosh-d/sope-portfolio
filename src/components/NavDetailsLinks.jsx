@@ -22,11 +22,11 @@ export default function NavDetailsLinks() {
         <p className={`${fonts.eduTitle}`}><em className="font-bold text-[color:var(--white-color)]">Bsc</em> Information and Communication Science - (Nov 2017 - Dec 2022)</p>
       </div>
       <nav>
-        <ul className="flex flex-col gap-[3.6rem]">
-          <li className={`${fonts.mainContent} cursor-pointer`} onClick={() => setSection("about")}>ABOUT</li>
-          <li className={`${fonts.mainContent} cursor-pointer`} onClick={() => setSection("experience")}>EXPERIENCE</li>
-          <li className={`${fonts.mainContent} cursor-pointer`} onClick={() => setSection("skills")}>SKILLS</li>
-          <li className={`${fonts.mainContent} cursor-pointer`} onClick={() => setSection("projects")}>PROJECTS</li>
+        <ul className="flex flex-col gap-[3.6rem] w-fit">
+          <li className={`${fonts.mainContent} ${section === "about" && "active"} cursor-pointer w-fit`} onClick={() => setSection("about")}>ABOUT</li>
+          <li className={`${fonts.mainContent} ${section === "experience" && "active"} cursor-pointer w-fit`} onClick={() => setSection("experience")}>EXPERIENCE</li>
+          <li className={`${fonts.mainContent} ${section === "skills" && "active"} cursor-pointer w-fit`} onClick={() => setSection("skills")}>SKILLS</li>
+          <li className={`${fonts.mainContent} ${section === "projects" && "active"} cursor-pointer w-fit`} onClick={() => setSection("projects")}>PROJECTS</li>
         </ul>
       </nav>
       <menu className="flex gap-[4.8rem] items-center">

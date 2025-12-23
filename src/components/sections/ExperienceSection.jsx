@@ -14,7 +14,7 @@ export default function ExperienceSection() {
   return (
     <div className="flex flex-col w-full gap-[12rem]">
       {sope[dataIndex].experience.map((experienceBlock, index) => (
-        <div key={index} className="flex w-full">
+        <div key={index} className="flex gap-[2rem] w-full">
           <div className={`${fonts.mainContent} w-[30%]`}>
             {experienceBlock.duration}
           </div>
@@ -46,6 +46,13 @@ export default function ExperienceSection() {
                   ))}
                   <span className="text-[color:var(--emphasis-color)]">]</span>
                 </p>
+              )}
+              {role === "designer" && (
+                <div className="flex gap-[1.8rem] w-full flex-wrap">
+                  {experienceBlock.tags.map((tag, index) => (
+                    <span key={index} className={`${fonts.mainContent} bg-[var(--emphasis-color)] text-[var(--white-color)] rounded-md px-[.8rem] py-[.2rem]`}>#{tag}</span>
+                  ))}
+                </div>
               )}
             </div>
           </div>

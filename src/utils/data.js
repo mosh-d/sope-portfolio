@@ -67,6 +67,7 @@ const sope = [
     ],
     skills: [
       {
+        icon: "figma",
         title: "Figma",
         tags: [
           "User Personas",
@@ -81,6 +82,7 @@ const sope = [
         ],
       },
       {
+        icon: "clipStudioPaint",
         title: "Clip Studio Paint",
         tags: [
           "Idea Drafts",
@@ -92,10 +94,12 @@ const sope = [
         ],
       },
       {
+        icon: "google",
         title: "Google",
         tags: ["Google Forms", "Questionnaires", "Information Architecture"],
       },
       {
+        icon: "mental",
         title: "Mental",
         tags: [
           "User Research",
@@ -111,14 +115,55 @@ const sope = [
       },
     ],
     projects: [
-      "The Cordis Hotel Web Design",
-      "Five Clover Hotels Group Website",
-      "Totesphere Official Website Mockups",
-      "Console Game Booking App Case Study",
-      "Gaming Lounge Banner Design",
-      "Fashion E-commerce Website Landing Page",
-      "Motion Graphics",
-      "Digital Art",
+      {
+        title: "The Cordis Hotel Web Design",
+        logo: ,
+        image: "d_arcade" 
+      },
+      {
+        title: "Five Clover Hotels Group Website",
+        logo: ,
+        image: "d_art" 
+      },
+      {
+        title: "Totesphere Official Website Mockups",
+        logo: ,
+        image: "d_basheed" 
+      },
+      {
+        title: "Console Game Booking App Case Study",
+        logo: ,
+        image: "d_cordis" 
+      },
+      {
+        title: "Gaming Lounge Banner Design",
+        logo: ,
+        image: "d_fiveClover" 
+      },
+      {
+        title: "Fashion E-commerce Website Landing Page",
+        logo: ,
+        image: "d_haori" 
+      },
+      {
+        title: "Motion Graphics",
+        logo: ,
+        image: "d_motion" 
+      },
+      {
+        title: "Digital Art",
+        logo: ,
+        image: "d_totesphere" 
+      }
+     
+      ,
+      ,
+      ,
+      ,
+      ,
+      ,
+      ,
+     ,
     ],
   },
   {
@@ -153,19 +198,15 @@ const sope = [
       },
       {
         duration: "Jun 2024 - Sep 2025",
-        title: "Lead Front-end Engineer at Totesphere (Part-time from May 2025)",
+        title:
+          "Lead Front-end Engineer at Totesphere (Part-time from May 2025)",
         descriptionPoints: [
           "Designed a high-fidelity, dynamic, and intuitive prototype for the Totesphere website (a website dedicated to providing grants for startup businesses) using Figma. Focused on maintaining brand identity while crafting interactive components that fell in line with color theory and design principles.",
           "Continued to bring the website design to life with HTML, CSS, and JavaScript. Added dynamic components with the aid of event listeners, url manipulation, and other intuitive functions and methods.",
           "Implemented API request for Google map data.",
           "Optimized page loading, leading to an average load time of 2 seconds, down 50% from 4 seconds.",
         ],
-        tags: [
-          "HTML",
-          "CSS",
-          "SCSS",
-          "JavaScript",
-        ],
+        tags: ["HTML", "CSS", "SCSS", "JavaScript"],
       },
       {
         duration: "Sep 2022 - Jun 2023",
@@ -185,18 +226,54 @@ const sope = [
       },
     ],
     skills: [
-      "React",
-      "Next.js",
-      "Node.js",
-      "Express.js",
-      "PostgreSQL",
-      "MongoDB",
-      "JavaScript",
-      "CSS",
-      "Tailwind",
-      "SCSS",
-      "Git",
-      "HTML",
+      {
+        icon: "react",
+        title: "React",
+      },
+      {
+        icon: "next",
+        title: "Next.js",
+      },
+      {
+        icon: "node",
+        title: "Node.js",
+      },
+      {
+        icon: "express",
+        title: "Express.js",
+      },
+      {
+        icon: "postGres",
+        title: "PostgreSQL",
+      },
+      {
+        icon: "mongoDB",
+        title: "MongoDB",
+      },
+      {
+        icon: "javaScript",
+        title: "JavaScript",
+      },
+      {
+        icon: "css",
+        title: "CSS",
+      },
+      {
+        icon: "tailwind",
+        title: "Tailwind",
+      },
+      {
+        icon: "scss",
+        title: "SCSS",
+      },
+      {
+        icon: "git",
+        title: "Git",
+      },
+      {
+        icon: "html",
+        title: "HTML",
+      },
     ],
     projects: [
       "Cordis Hotel Website (front end)",

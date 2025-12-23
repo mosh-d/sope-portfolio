@@ -77,7 +77,6 @@ body::before {
   z-index: -1; /* behind all content */
 }
 
-
 .font-primary {
   font-family: var(--font-primary);
 }
@@ -88,4 +87,11 @@ body::before {
 
 .font-accent {
   font-family: var(--font-accent);
+}
+
+.active {
+  background-color: var(--emphasis-color);
+  color: var(--white-color);
+  padding-left: 1rem;
+  padding-right: 4rem;
 }

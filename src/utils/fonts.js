@@ -1,6 +1,7 @@
 const fonts = {
   heroTitle: "text-[12rem] text-white font-thin",
   mainHeading: "text-[5.4rem] font-bold font-secondary",
+  skillHeading: "text-[2.5rem] font-bold font-secondary",
   heroSmall: "text-[1.3rem]",
   initialText: "text-[2.8rem] font-accent",
   roleTitle: "text-[2.2rem] font-accent text-[color:var(--text-color)]",

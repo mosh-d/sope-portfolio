@@ -155,12 +155,12 @@ function App() {
           </section>
         </div>
       </header>
-      <main className="bg-cover bg-center bg-no-repeat p-[12rem] h-[100vh] min-h-[80rem] overflow-hidden">
+      <main className="relative bg-cover bg-center bg-no-repeat p-[12rem] h-[100vh] min-h-[80rem] overflow-hidden">
         <div
-          className="absolute inset-0 bg-bottom bg-cover bg-no-repeat"
+          className="absolute left-[5rem] bottom-0 inset-0 bg-bottom bg-cover bg-no-repeat"
           style={{
             backgroundImage: `url(${
-              section === "about"
+              section === "about" && (role === "engineer" || "designer")
                 ? sope1
                 : section === "experience"
                 ? sope2
@@ -172,9 +172,10 @@ function App() {
             })`,
             width: "70rem",
             // height: "70rem",
-            bottom: "0",
-            position: "fixed",
-            left: "20rem",
+            bottom: "-20rem",
+            transform: "scale(.7)",
+            // position: "fixed",
+            // left: "20rem",
             zIndex: "1",
           }}
         />

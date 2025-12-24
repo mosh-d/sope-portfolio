@@ -117,45 +117,45 @@ const sope = [
     projects: [
       {
         title: "The Cordis Hotel Web Design",
-        logo: ,
-        image: "d_arcade" 
+        logo: ["figma", "clipStudioPaint"],
+        image: "d_cordis",
       },
       {
         title: "Five Clover Hotels Group Website",
-        logo: ,
-        image: "d_art" 
+        logo: ["figma", "clipStudioPaint"],
+        image: "d_fiveClover",
       },
       {
         title: "Totesphere Official Website Mockups",
-        logo: ,
-        image: "d_basheed" 
+        logo: ["figma", "clipStudioPaint"],
+        image: "d_totesphere",
       },
       {
         title: "Console Game Booking App Case Study",
-        logo: ,
-        image: "d_cordis" 
+        logo: ["figma", "clipStudioPaint", "google"],
+        image: "d_arcade",
       },
       {
         title: "Gaming Lounge Banner Design",
-        logo: ,
-        image: "d_fiveClover" 
+        logo: ["figma", "clipStudioPaint"],
+        image: "d_basheed",
       },
       {
         title: "Fashion E-commerce Website Landing Page",
-        logo: ,
-        image: "d_haori" 
+        logo: ["figma", "clipStudioPaint", "google"],
+        image: "d_haori",
       },
       {
         title: "Motion Graphics",
-        logo: ,
-        image: "d_motion" 
+        logo: ["afterEffects"],
+        image: "d_motion",
       },
       {
         title: "Digital Art",
-        logo: ,
-        image: "d_totesphere" 
-      }
-     
+        logo: ["clipStudioPaint"],
+        image: "d_art",
+      },
+
       ,
       ,
       ,
@@ -163,7 +163,6 @@ const sope = [
       ,
       ,
       ,
-     ,
     ],
   },
   {
@@ -276,9 +275,30 @@ const sope = [
       },
     ],
     projects: [
-      "Cordis Hotel Website (front end)",
-      "Five Clover Hotel Website (full stack)",
-      "Totesphere Partnerships Website (front end)",
+      {
+        title: "Cordis Hotel Website (front end)",
+        logo: ["react", "css", "javaScript", "git"],
+        image: "e_cordis",
+      },
+      {
+        title: "Five Clover Hotel Website (full stack)",
+        logo: [
+          "react",
+          "tailwind",
+          "css",
+          "javaScript",
+          "node",
+          "express",
+          "postGres",
+          "git",
+        ],
+        image: "e_fiveClover",
+      },
+      {
+        title: "Totesphere Partnerships Website (front end)",
+        logo: ["html", "css", "scss", "javaScript", "git"],
+        image: "e_totesphere",
+      },
     ],
   },
 ];

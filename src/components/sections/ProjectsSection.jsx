@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { RoleContext } from "../store/role-context.jsx";
+import { RoleContext } from "../../store/role-context.jsx";
 
-import sope from "../utils/data.js";
-import fonts from "../utils/fonts.js";
+import sope from "../../utils/data.js";
+import fonts from "../../utils/fonts.js";
 
 // Icons
 import { FaReact } from "react-icons/fa";
@@ -21,6 +21,7 @@ import { IoLogoFigma } from "react-icons/io5";
 import { FaPaintBrush } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { GiBrain } from "react-icons/gi";
+import { SiAdobeaftereffects } from "react-icons/si";
 
 // Designer Images
 import d_arcade from "../../assets/designer-pics/arcade.png";
@@ -40,7 +41,7 @@ import e_totesphere from "../../assets/engineer-pics/totesphere.png";
 export default function ProjectsSection() {
   const { role, dataIndex, section, setSection } = useContext(RoleContext);
 
-   const icons = {
+  const icons = {
     react: <FaReact size="3.5rem" color="var(--emphasis-color)" />,
     next: <RiNextjsFill size="3.5rem" color="var(--emphasis-color)" />,
     node: <FaNodeJs size="3.5rem" color="var(--emphasis-color)" />,
@@ -60,8 +61,48 @@ export default function ProjectsSection() {
       <FaPaintBrush size="3.5rem" color="var(--emphasis-color)" />
     ),
     google: <FaGoogle size="3.5rem" color="var(--emphasis-color)" />,
+    afterEffects: (
+      <SiAdobeaftereffects size="3.5rem" color="var(--emphasis-color)" />
+    ),
     mental: <GiBrain size="3.5rem" color="var(--emphasis-color)" />,
   };
 
-  return <div></div>;
+  const images = {
+    d_arcade,
+    d_art,
+    d_basheed,
+    d_cordis,
+    d_fiveClover,
+    d_haori,
+    d_motion,
+    d_totesphere,
+    e_cordis,
+    e_fiveClover,
+    e_totesphere,
+  };
+
+  return (
+    <div className="w-full flex flex-col gap-[12rem] items-center">
+      {sope[dataIndex].projects.map((project, index) => (
+        <div
+          key={index}
+          style={{
+            backgroundImage: `url(${images[project.image]})`,
+          }}
+          className={`w-[70%] gap-[1rem] bg-no-repeat bg-cover bg-blend-multiply aspect-video rounded-2xl border border-[var(--white-color)]/20 flex flex-col justify-end p-[3.6rem]`}
+        >
+          <h4
+            className={`${fonts.roleTitle} font-bold text-[color:var(white-color)]`}
+          >
+            {project.title}
+          </h4>
+          <div className="flex gap-[1rem]">
+            {project.logo.map((logo, index) => (
+              <div key={index}>{icons[logo]}</div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }

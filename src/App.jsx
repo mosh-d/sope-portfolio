@@ -8,6 +8,13 @@ import NavDetailsLinks from "./components/NavDetailsLinks.jsx";
 import AboutSection from "./components/sections/AboutSection.jsx";
 import ExperienceSection from "./components/sections/ExperienceSection.jsx";
 import SkillsSection from "./components/sections/SkillsSection.jsx";
+import ProjectsSection from "./components/sections/ProjectsSection.jsx";
+
+// Images
+import sope1 from "./assets/sope-pics/sope-1.png";
+import sope2 from "./assets/sope-pics/sope-2.png";
+import sope3 from "./assets/sope-pics/sope-3.png";
+import sope4 from "./assets/sope-pics/sope-4.png";
 
 // Icons
 import { GrLanguage } from "react-icons/gr";
@@ -58,13 +65,17 @@ function App() {
           </button>
         </menu>
       </div>
-      <header className="bg-[color:var(--white-color)] h-[70vh] min-h-[60rem] shadow-xl">
-        <h1 className={`${fonts.heroTitle} absolute z-10 mix-blend-difference whitespace-nowrap`}>Welcome to Sope's Portfolio</h1>
+      <header className="bg-[color:var(--white-color)] h-[70vh] min-h-[60rem] shadow-xl z-20">
+        <h1
+          className={`${fonts.heroTitle} absolute z-10 mix-blend-difference whitespace-nowrap`}
+        >
+          Welcome to Sope's Portfolio
+        </h1>
         <div className="flex h-[100%]">
-          `{" "}
+          {" "}
           <section
             onClick={() => setRole("designer")}
-            className="w-[50%] h-[100%] cursor-pointer p-[3rem] flex flex-col justify-center items-center"
+            className="w-[50%] h-[100%] cursor-pointer p-[3rem] bg-[var(--white-color)] flex flex-col justify-center items-center"
           >
             <div className="inline-block w-[35rem] mb-[20rem]">
               <h2
@@ -90,7 +101,6 @@ function App() {
               </div>
             </div>
           </section>
-          `
           <section
             onClick={() => setRole("engineer")}
             className="w-[50%] h-[100%] cursor-pointer flex flex-col justify-center items-center p-[3rem] bg-[var(--background-color-2)] text-[color:var(--white-color)]"
@@ -102,13 +112,40 @@ function App() {
               <div className={`${fonts.heroSmall}`}>
                 <pre>
                   <code>
-                    <span className="text-[color:var(--emphasis-color)]">const</span> <span className="text-[color:var(--accent-color)]">SOPE</span> = <span className="text-amber-300">{"{"}</span>
+                    <span className="text-[color:var(--emphasis-color)]">
+                      const
+                    </span>{" "}
+                    <span className="text-[color:var(--accent-color)]">
+                      SOPE
+                    </span>{" "}
+                    = <span className="text-amber-300">{"{"}</span>
                     <br />
-                    &nbsp;&nbsp;<span className="text-[color:var(--text-color)]">frontEnd: 
-                      </span><span className="text-[color:var(--emphasis-color)]"> [</span>HTML, CSS, JavaScript, React, Next.js<span className="text-[color:var(--emphasis-color)]">]</span>,
+                    &nbsp;&nbsp;
+                    <span className="text-[color:var(--text-color)]">
+                      frontEnd:
+                    </span>
+                    <span className="text-[color:var(--emphasis-color)]">
+                      {" "}
+                      [
+                    </span>
+                    HTML, CSS, JavaScript, React, Next.js
+                    <span className="text-[color:var(--emphasis-color)]">
+                      ]
+                    </span>
+                    ,
                     <br />
-                    &nbsp;&nbsp;<span className="text-[color:var(--text-color)]">backEnd:</span>
-                    <span className="text-[color:var(--emphasis-color)]"> [</span>Node.js, Express.js, MongoDb, PostgreSQL<span className="text-[color:var(--emphasis-color)]">]</span>
+                    &nbsp;&nbsp;
+                    <span className="text-[color:var(--text-color)]">
+                      backEnd:
+                    </span>
+                    <span className="text-[color:var(--emphasis-color)]">
+                      {" "}
+                      [
+                    </span>
+                    Node.js, Express.js, MongoDb, PostgreSQL
+                    <span className="text-[color:var(--emphasis-color)]">
+                      ]
+                    </span>
                     <br />
                     <span className="text-amber-300">{"}"}</span>;
                   </code>
@@ -118,7 +155,29 @@ function App() {
           </section>
         </div>
       </header>
-      <main className="p-[12rem] h-[100vh] min-h-[80rem] overflow-hidden">
+      <main className="bg-cover bg-center bg-no-repeat p-[12rem] h-[100vh] min-h-[80rem] overflow-hidden">
+        <div
+          className="absolute inset-0 bg-bottom bg-cover bg-no-repeat"
+          style={{
+            backgroundImage: `url(${
+              section === "about"
+                ? sope1
+                : section === "experience"
+                ? sope2
+                : section === "skills"
+                ? sope3
+                : section === "projects"
+                ? sope4
+                : undefined
+            })`,
+            width: "70rem",
+            // height: "70rem",
+            bottom: "0",
+            position: "fixed",
+            left: "20rem",
+            zIndex: "1",
+          }}
+        />
         {role && (
           <div className="flex h-full items-start gap-[4rem]">
             <NavDetailsLinks />
@@ -129,13 +188,19 @@ function App() {
                 <ExperienceSection />
               ) : section === "skills" ? (
                 <SkillsSection />
+              ) : section === "projects" ? (
+                <ProjectsSection />
               ) : undefined}
             </section>
           </div>
         )}
         {role === "" ? (
           <section className="flex justify-center items-center">
-            <p className={`${fonts.initialText} text-[color:var(--text-color)]`}>Pick a side to begin.</p>
+            <p
+              className={`${fonts.initialText} text-[color:var(--text-color)]`}
+            >
+              Pick a side to begin.
+            </p>
           </section>
         ) : undefined}
       </main>

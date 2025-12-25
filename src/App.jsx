@@ -2,6 +2,8 @@ import { useState, useMemo } from "react";
 import sope from "./utils/data.js";
 import fonts from "./utils/fonts.js";
 import { RoleContext } from "./store/role-context.jsx";
+import {motion} from "motion/react";
+import { AnimatePresence } from "motion/react";
 
 // Components
 import NavDetailsLinks from "./components/NavDetailsLinks.jsx";
@@ -156,11 +158,13 @@ function App() {
         </div>
       </header>
       <main className="relative bg-cover bg-center bg-no-repeat p-[12rem] h-[100vh] min-h-[80rem] overflow-hidden">
-        <div
-          className="absolute left-[5rem] bottom-0 inset-0 bg-bottom bg-cover bg-no-repeat"
+        <motion.div
+          className="absolute left-[5rem] bottom-0 inset-0 bg-bottom bg-cover bg-no-repeat scale-[.7]"
+          intial={{ x: -50 }}            
+          animate={{ x: 0 }}            
           style={{
             backgroundImage: `url(${
-              section === "about" && (role === "engineer" || "designer")
+              section === "about" && role
                 ? sope1
                 : section === "experience"
                 ? sope2
@@ -170,12 +174,8 @@ function App() {
                 ? sope4
                 : undefined
             })`,
-            width: "70rem",
-            // height: "70rem",
+            width: "80rem",
             bottom: "-20rem",
-            transform: "scale(.7)",
-            // position: "fixed",
-            // left: "20rem",
             zIndex: "1",
           }}
         />

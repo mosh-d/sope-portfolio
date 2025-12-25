@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { RoleContext } from "../../store/role-context.jsx";
+import { motion } from "framer-motion";
 
 import sope from "../../utils/data.js";
 import fonts from "../../utils/fonts.js";
@@ -82,10 +83,17 @@ export default function ProjectsSection() {
   };
 
   return (
-    <div className="w-full flex flex-col gap-[12rem] items-center">
+    <div className="w-full flex flex-col gap-[12rem] items-center py-[10rem]">
       {sope[dataIndex].projects.map((project, index) => (
-        <div
+        <motion.div
           key={index}
+          whileHover={{
+            scale: 1.03,
+            border: "1px solid var(--accent-color)",
+            boxShadow: "0px 0px 10rem hsla(175, 100%, 50%, .1)",
+            cursor: "pointer",
+          }}
+          transition={{ type: "spring", duration: .5, stiffness: 400, damping: 8 }}
           style={{
             backgroundImage: `url(${images[project.image]})`,
           }}
@@ -101,7 +109,7 @@ export default function ProjectsSection() {
               <div key={index}>{icons[logo]}</div>
             ))}
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

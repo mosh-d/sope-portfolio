@@ -89,9 +89,10 @@ body::before {
   font-family: var(--font-accent);
 }
 
-.active {
+/* .active {
   background-color: var(--emphasis-color);
   color: var(--white-color);
   padding-left: 1rem;
   padding-right: 4rem;
-}
+  width: calc(width + 4rem); 
+} */

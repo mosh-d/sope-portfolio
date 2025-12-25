@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { RoleContext } from "../store/role-context.jsx";
+import { motion } from "motion/react";
 
 // Icons
 import { FaGithub } from "react-icons/fa";
@@ -36,39 +37,44 @@ export default function NavDetailsLinks() {
         </p>
       </div>
       <nav>
-        <ul className="flex flex-col gap-[3.6rem] w-fit">
-          <li
-            className={`${fonts.mainContent} ${
-              section === "about" && "active"
-            } cursor-pointer w-fit`}
-            onClick={() => setSection("about")}
-          >
-            ABOUT
-          </li>
-          <li
-            className={`${fonts.mainContent} ${
-              section === "experience" && "active"
-            } cursor-pointer w-fit`}
-            onClick={() => setSection("experience")}
-          >
-            EXPERIENCE
-          </li>
-          <li
-            className={`${fonts.mainContent} ${
-              section === "skills" && "active"
-            } cursor-pointer w-fit`}
-            onClick={() => setSection("skills")}
-          >
-            SKILLS
-          </li>
-          <li
-            className={`${fonts.mainContent} ${
-              section === "projects" && "active"
-            } cursor-pointer w-fit`}
-            onClick={() => setSection("projects")}
-          >
-            PROJECTS
-          </li>
+        <ul className="flex flex-col gap-[3.6rem] w-max">
+          {[
+            ["about", "ABOUT"],
+            ["experience", "EXPERIENCE"],
+            ["skills", "SKILLS"],
+            ["projects", "PROJECTS"],
+          ].map(([key, label]) => (
+            <motion.li
+              key={key}
+              className="relative cursor-pointer w-fit pl-[1.2rem] py-[.2rem] pr-[4rem]"
+              onClick={() => setSection(key)}
+            >
+              {/* Active background */}
+              <motion.div
+                className="absolute inset-0 bg-[var(--emphasis-color)]"
+                initial={false}
+                animate={{
+                  opacity: section === key ? 1 : 0,
+                  scaleX: section === key ? 1 : 0,
+                }}
+                transition={{ duration: 0.25, ease: "easeOut", type: "spring" }}
+                style={{ originX: 0 }}
+              />
+
+              {/* Text */}
+              <span
+                className={`${fonts.mainContent} relative z-10`}
+                style={{
+                  color:
+                    section === key
+                      ? "var(--white-color)"
+                      : "var(--text-color)",
+                }}
+              >
+                {label}
+              </span>
+            </motion.li>
+          ))}
         </ul>
       </nav>
       <menu className="flex gap-[4.8rem] items-center">

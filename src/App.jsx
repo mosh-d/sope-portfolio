@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import sope from "./utils/data.js";
 import fonts from "./utils/fonts.js";
 import { RoleContext } from "./store/role-context.jsx";
-import {motion} from "motion/react";
+import { motion } from "motion/react";
 import { AnimatePresence } from "motion/react";
 
 // Components
@@ -28,6 +28,8 @@ function App() {
   console.log("Section: ", section);
   const [language, setLanguage] = useState("English");
   console.log("Language: ", language);
+
+  const [hoveredSection, setHoveredSection] = useState(null);
 
   const dataIndex = useMemo(() => {
     if (role === "designer") return 0;
@@ -67,17 +69,43 @@ function App() {
           </button>
         </menu>
       </div>
-      <header className="bg-[color:var(--white-color)] h-[70vh] min-h-[60rem] shadow-xl z-20">
-        <h1
+      <header className="bg-[color:var(--background-color)] h-[70vh] min-h-[60rem] shadow-xl z-20">
+        <motion.h1
           className={`${fonts.heroTitle} absolute z-10 mix-blend-difference whitespace-nowrap`}
+          animate={{}}
         >
           Welcome to Sope's Portfolio
-        </h1>
+        </motion.h1>
         <div className="flex h-[100%]">
           {" "}
-          <section
-            onClick={() => setRole("designer")}
-            className="w-[50%] h-[100%] cursor-pointer p-[3rem] bg-[var(--white-color)] flex flex-col justify-center items-center"
+          <motion.section
+            onClick={() => {
+              setRole("designer");
+              setTimeout(() => {
+                window.scrollTo({
+                  top: document.body.scrollHeight,
+                  behavior: "smooth",
+                });
+              }, 1500);
+            }}
+            onMouseEnter={() => setHoveredSection("designer")}
+            onMouseLeave={() => setHoveredSection(null)}
+            className={`w-[50%] h-[100%] cursor-pointer p-[3rem] bg-[var(--white-color)] flex flex-col justify-center items-center`}
+            animate={{
+              width:
+                hoveredSection === "designer" || role === "designer"
+                  ? "70%"
+                  : hoveredSection === "engineer" || role === "engineer"
+                  ? "30%"
+                  : "50%",
+              opacity: role === "engineer" ? 0.7 : 1,
+              filter:
+                role === "engineer" && hoveredSection !== "designer"
+                  ? "blur(2px)"
+                  : "blur(0px)",
+            }}
+            transition={{ type: "tween", duration: 1.5, ease: "anticipate" }}
+            style={{ transformOrigin: "left" }}
           >
             <div className="inline-block w-[35rem] mb-[20rem]">
               <h2
@@ -102,10 +130,35 @@ function App() {
                 ))}
               </div>
             </div>
-          </section>
-          <section
-            onClick={() => setRole("engineer")}
-            className="w-[50%] h-[100%] cursor-pointer flex flex-col justify-center items-center p-[3rem] bg-[var(--background-color-2)] text-[color:var(--white-color)]"
+          </motion.section>
+          <motion.section
+            onClick={() => {
+              setRole("engineer");
+              setTimeout(() => {
+                window.scrollTo({
+                  top: document.body.scrollHeight,
+                  behavior: "smooth",
+                });
+              }, 1500);
+            }}
+            onMouseEnter={() => setHoveredSection("engineer")}
+            onMouseLeave={() => setHoveredSection(null)}
+            className={`w-[50%] h-[100%] cursor-pointer flex flex-col justify-center items-center p-[3rem] bg-[var(--background-color-2)] text-[color:var(--white-color)]`}
+            animate={{
+              width:
+                hoveredSection === "engineer" || role === "engineer"
+                  ? "70%"
+                  : hoveredSection === "designer" || role === "designer"
+                  ? "30%"
+                  : "50%",
+              opacity: role === "designer" ? 0.7 : 1,
+              filter:
+                role === "designer" && hoveredSection !== "engineer"
+                  ? "blur(2px)"
+                  : "blur(0px)",
+            }}
+            transition={{ type: "tween", duration: 1.5, ease: "anticipate" }}
+            style={{ transformOrigin: "right" }}
           >
             <div className="inline-block mt-[20rem]">
               <h2
@@ -154,14 +207,14 @@ function App() {
                 </pre>
               </div>
             </div>
-          </section>
+          </motion.section>
         </div>
       </header>
       <main className="relative bg-cover bg-center bg-no-repeat p-[12rem] h-[100vh] min-h-[80rem] overflow-hidden">
         <motion.div
           className="absolute left-[5rem] bottom-0 inset-0 bg-bottom bg-cover bg-no-repeat scale-[.7]"
-          intial={{ x: -50 }}            
-          animate={{ x: 0 }}            
+          intial={{ x: -50 }}
+          animate={{ x: 0 }}
           style={{
             backgroundImage: `url(${
               section === "about" && role
@@ -182,16 +235,22 @@ function App() {
         {role && (
           <div className="flex h-full items-start gap-[4rem]">
             <NavDetailsLinks />
-            <section className="flex flex-col w-[60%] overflow-y-auto h-full">
-              {section === "about" ? (
-                <AboutSection />
-              ) : section === "experience" ? (
-                <ExperienceSection />
-              ) : section === "skills" ? (
-                <SkillsSection />
-              ) : section === "projects" ? (
-                <ProjectsSection />
-              ) : undefined}
+            <section className="flex flex-col w-[60%] overflow-y-auto overflow-x-hidden h-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={section}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 100 }}
+                  transition={{ type: "spring", duration: .3, ease: "easeOut" }}
+                  className="h-full"
+                >
+                  {section === "about" && <AboutSection />}
+                  {section === "experience" && <ExperienceSection />}
+                  {section === "skills" && <SkillsSection />}
+                  {section === "projects" && <ProjectsSection />}
+                </motion.div>
+              </AnimatePresence>
             </section>
           </div>
         )}

@@ -48,6 +48,10 @@ export default function NavDetailsLinks() {
               key={key}
               className="relative cursor-pointer w-fit pl-[1.2rem] py-[.2rem] pr-[4rem]"
               onClick={() => setSection(key)}
+              whileHover={{
+                backgroundColor: "hsla(338, 85%, 47%, .15)",
+              }}
+              transition={{ duration: 1, ease: "easeOut", type: "spring" }}
             >
               {/* Active background */}
               <motion.div
@@ -57,7 +61,7 @@ export default function NavDetailsLinks() {
                   opacity: section === key ? 1 : 0,
                   scaleX: section === key ? 1 : 0,
                 }}
-                transition={{ duration: 0.25, ease: "easeOut", type: "spring" }}
+                transition={{ duration: 0.7, ease: "easeOut", type: "spring" }}
                 style={{ originX: 0 }}
               />
 
@@ -77,20 +81,50 @@ export default function NavDetailsLinks() {
           ))}
         </ul>
       </nav>
-      <menu className="flex gap-[4.8rem] items-center">
-        <li>
-          <FaGithub size="3.5rem" color="var(--accent-color)" />
-        </li>
-        <li>
-          <TiSocialLinkedinCircular size="4.5rem" color="var(--accent-color)" />
-        </li>
-        <li>
-          <IoLogoWhatsapp size="3.5rem" color="var(--accent-color)" />
-        </li>
-        <li>
-          <IoLogoBehance size="3.5rem" color="var(--accent-color)" />
-        </li>
-      </menu>
+      <ul className="flex gap-[4.8rem] items-center z-10">
+        <motion.li
+          className="cursor-pointer inline-flex"
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: .9 }}
+        >
+          <a href="">
+            <FaGithub size="3.5rem" color="var(--accent-color)" />
+          </a>
+        </motion.li>
+
+        <motion.li
+          className="cursor-pointer inline-flex"
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: .9 }}
+        >
+          <a href="">
+            <TiSocialLinkedinCircular
+              size="4.5rem"
+              color="var(--accent-color)"
+            />
+          </a>
+        </motion.li>
+
+        <motion.li
+          className="cursor-pointer inline-flex"
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: .9 }}
+        >
+          <a href="">
+            <IoLogoWhatsapp size="3.5rem" color="var(--accent-color)" />
+          </a>
+        </motion.li>
+
+        <motion.li
+          className="cursor-pointer inline-flex"
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: .9 }}
+        >
+          <a href="">
+            <IoLogoBehance size="3.5rem" color="var(--accent-color)" />
+          </a>
+        </motion.li>
+      </ul>
     </aside>
   );
 }

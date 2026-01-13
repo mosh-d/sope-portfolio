@@ -85,31 +85,43 @@ export default function ProjectsSection() {
   return (
     <div className="w-full flex flex-col gap-[12rem] items-center py-[10rem]">
       {sope[dataIndex].projects.map((project, index) => (
-        <motion.div
-          key={index}
-          whileHover={{
-            scale: 1.03,
-            border: "1px solid var(--accent-color)",
-            boxShadow: "0px 0px 10rem hsla(175, 100%, 50%, .1)",
-            cursor: "pointer",
-          }}
-          transition={{ type: "spring", duration: .5, stiffness: 400, damping: 8 }}
-          style={{
-            backgroundImage: `url(${images[project.image]})`,
-          }}
-          className={`w-[70%] gap-[1rem] bg-no-repeat bg-cover bg-blend-multiply aspect-video rounded-2xl border border-[var(--white-color)]/20 flex flex-col justify-end p-[3.6rem]`}
-        >
-          <h4
-            className={`${fonts.roleTitle} font-bold text-[color:var(white-color)]`}
+        <a href={project.url} target="blank" className="w-[70%]">
+          <motion.div
+            key={index}
+            whileHover={{
+              scale: 1.02,
+              border: "1px solid var(--accent-color)",
+              boxShadow: "0px 0px 10rem hsla(175, 100%, 50%, .1)",
+              cursor: "pointer",
+            }}
+            whileTap={{
+              scale: 1,
+              border: "1px solid var(--emphasis-color)",
+              boxShadow: "0px 0px 10rem hsla(338, 100%, 50%, .1)",
+            }}
+            transition={{
+              type: "spring",
+              duration: 0.3,
+              stiffness: 400,
+              damping: 12,
+            }}
+            style={{
+              backgroundImage: `url(${images[project.image]})`,
+            }}
+            className={`w-[100%] gap-[1rem] bg-no-repeat bg-cover bg-blend-multiply aspect-video rounded-2xl border border-[var(--white-color)]/20 flex flex-col justify-end p-[3.6rem]`}
           >
-            {project.title}
-          </h4>
-          <div className="flex gap-[1rem]">
-            {project.logo.map((logo, index) => (
-              <div key={index}>{icons[logo]}</div>
-            ))}
-          </div>
-        </motion.div>
+            <h4
+              className={`${fonts.roleTitle} font-bold text-[color:var(white-color)]`}
+            >
+              {project.title}
+            </h4>
+            <div className="flex gap-[1rem]">
+              {project.logo.map((logo, index) => (
+                <div key={index}>{icons[logo]}</div>
+              ))}
+            </div>
+          </motion.div>
+        </a>
       ))}
     </div>
   );

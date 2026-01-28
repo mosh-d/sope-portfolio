@@ -43,29 +43,108 @@ export default function ProjectsSection() {
   const { role, dataIndex, section, setSection } = useContext(RoleContext);
 
   const icons = {
-    react: <FaReact size="3.5rem" color="var(--emphasis-color)" />,
-    next: <RiNextjsFill size="3.5rem" color="var(--emphasis-color)" />,
-    node: <FaNodeJs size="3.5rem" color="var(--emphasis-color)" />,
-    express: <SiExpress size="3.5rem" color="var(--emphasis-color)" />,
-    postGres: <BiLogoPostgresql size="3.5rem" color="var(--emphasis-color)" />,
-    mongoDB: <BiLogoMongodb size="3.5rem" color="var(--emphasis-color)" />,
+    react: (
+      <FaReact
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
+    next: (
+      <RiNextjsFill
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
+    node: (
+      <FaNodeJs
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
+    express: (
+      <SiExpress
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
+    postGres: (
+      <BiLogoPostgresql
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
+    mongoDB: (
+      <BiLogoMongodb
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
     javaScript: (
-      <IoLogoJavascript size="3.5rem" color="var(--emphasis-color)" />
+      <IoLogoJavascript
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
     ),
-    css: <SiCsswizardry size="3.5rem" color="var(--emphasis-color)" />,
-    tailwind: <SiTailwindcss size="3.5rem" color="var(--emphasis-color)" />,
-    scss: <SiSass size="3.5rem" color="var(--emphasis-color)" />,
-    git: <FaGitAlt size="3.5rem" color="var(--emphasis-color)" />,
-    html: <TiHtml5 size="3.5rem" color="var(--emphasis-color)" />,
-    figma: <IoLogoFigma size="3.5rem" color="var(--emphasis-color)" />,
+    css: (
+      <SiCsswizardry
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
+    tailwind: (
+      <SiTailwindcss
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
+    scss: (
+      <SiSass
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
+    git: (
+      <FaGitAlt
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
+    html: (
+      <TiHtml5
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
+    figma: (
+      <IoLogoFigma
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
     clipStudioPaint: (
-      <FaPaintBrush size="3.5rem" color="var(--emphasis-color)" />
+      <FaPaintBrush
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
     ),
-    google: <FaGoogle size="3.5rem" color="var(--emphasis-color)" />,
+    google: (
+      <FaGoogle
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
     afterEffects: (
-      <SiAdobeaftereffects size="3.5rem" color="var(--emphasis-color)" />
+      <SiAdobeaftereffects
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
     ),
-    mental: <GiBrain size="3.5rem" color="var(--emphasis-color)" />,
+    mental: (
+      <GiBrain
+        className="w-[2.5rem] h-[2.5rem] lg:w-[3.5rem] lg:h-[3.5rem]"
+        color="var(--emphasis-color)"
+      />
+    ),
   };
 
   const images = {
@@ -83,7 +162,7 @@ export default function ProjectsSection() {
   };
 
   return (
-    <div className="w-full flex flex-col gap-[12rem] items-center py-[10rem]">
+    <div className="w-full flex flex-col gap-[12rem] items-center py-[10rem] max-lg:px-[0]">
       {sope[dataIndex].projects.map((project, index) => (
         <a href={project.url} target="blank" className="w-[70%]">
           <motion.div
@@ -111,7 +190,7 @@ export default function ProjectsSection() {
             className={`w-[100%] gap-[1rem] bg-no-repeat bg-cover bg-blend-multiply aspect-video rounded-2xl border border-[var(--white-color)]/20 flex flex-col justify-end p-[3.6rem]`}
           >
             <h4
-              className={`${fonts.roleTitle} font-bold text-[color:var(white-color)]`}
+              className={`${fonts.roleTitle} font-bold text-[color:var(white-color)] max-lg:text-[1.6rem]`}
             >
               {project.title}
             </h4>

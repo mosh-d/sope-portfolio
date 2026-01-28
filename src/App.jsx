@@ -74,7 +74,7 @@ function App() {
             </button>
           </menu>
         </div>
-        <header className="bg-[color:var(--background-color)] h-[70vh] min-h-[60rem] shadow-xl z-20">
+        <header className="bg-[color:var(--background-color)] h-[70vh] min-h-[70rem] shadow-xl z-20">
           <div className="absolute inset-0 overflow-hidden w-full">
             <motion.h1
               className={`${fonts.heroTitle} absolute z-10 mix-blend-difference whitespace-nowrap`}
@@ -108,11 +108,12 @@ function App() {
               animate={{
                 width:
                   hoveredSection === "designer" || role === "designer"
-                    ? "70%"
+                    ? "65%"
                     : hoveredSection === "engineer" || role === "engineer"
-                    ? "30%"
+                    ? "35%"
                     : "50%",
                 opacity: role === "engineer" ? 0.7 : 1,
+                zIndex: role === "engineer" ? 1 : 2,
                 filter:
                   role === "engineer" && hoveredSection !== "designer"
                     ? "blur(2px)"
@@ -161,11 +162,12 @@ function App() {
               animate={{
                 width:
                   hoveredSection === "engineer" || role === "engineer"
-                    ? "70%"
+                    ? "65%"
                     : hoveredSection === "designer" || role === "designer"
-                    ? "30%"
+                    ? "35%"
                     : "50%",
                 opacity: role === "designer" ? 0.7 : 1,
+                zIndex: role === "designer" ? 1 : 2,
                 filter:
                   role === "designer" && hoveredSection !== "engineer"
                     ? "blur(2px)"
@@ -224,7 +226,7 @@ function App() {
             </motion.section>
           </div>
         </header>
-        <main className="relative bg-cover bg-center bg-no-repeat p-[12rem] h-[100vh] min-h-[80rem] overflow-hidden">
+        <main className="relative bg-cover bg-center bg-no-repeat p-[12rem] max-lg:px-[4rem] h-[100vh] min-h-[80rem] overflow-hidden">
           <motion.div
             className="absolute left-[5rem] bottom-0 inset-0 bg-bottom bg-cover bg-no-repeat scale-[.7]"
             intial={{ x: -50 }}

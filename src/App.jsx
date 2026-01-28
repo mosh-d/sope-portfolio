@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import sope from "./utils/data.js";
 import fonts from "./utils/fonts.js";
 import { RoleContext } from "./store/role-context.jsx";
@@ -30,6 +30,23 @@ function App() {
   console.log("Language: ", language);
 
   const [hoveredSection, setHoveredSection] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile screen size (max-md = < 768px)
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Check on mount
+    checkMobile();
+
+    // Add resize listener
+    window.addEventListener("resize", checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const dataIndex = useMemo(() => {
     if (role === "designer") return 0;
@@ -74,10 +91,25 @@ function App() {
             </button>
           </menu>
         </div>
+        <div className="absolute inset-0 overflow-hidden w-full mt-[4rem]">
+          <motion.h1
+            className={`absolute z-10 mix-blend-difference whitespace-nowrap hidden max-md:block text-[4rem] text-white font-thin`}
+            initial={{ x: "100vw" }}
+            animate={{ x: "-100vw" }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 15,
+              ease: "linear",
+            }}
+          >
+            Welcome to Sope's Portfolio
+          </motion.h1>
+        </div>
         <header className="bg-[color:var(--background-color)] h-[70vh] min-h-[70rem] shadow-xl z-20">
           <div className="absolute inset-0 overflow-hidden w-full">
             <motion.h1
-              className={`${fonts.heroTitle} absolute z-10 mix-blend-difference whitespace-nowrap`}
+              className={`${fonts.heroTitle} absolute z-10 mix-blend-difference whitespace-nowrap max-md:hidden`}
               initial={{ x: "100vw" }}
               animate={{ x: "-100vw" }}
               transition={{
@@ -90,7 +122,7 @@ function App() {
               Welcome to Sope's Portfolio
             </motion.h1>
           </div>
-          <div className="flex h-[100%]">
+          <div className="flex h-[100%] max-md:flex-col">
             {" "}
             <motion.section
               onClick={() => {
@@ -104,14 +136,25 @@ function App() {
               }}
               onMouseEnter={() => setHoveredSection("designer")}
               onMouseLeave={() => setHoveredSection(null)}
-              className={`w-[50%] h-[100%] cursor-pointer p-[3rem] bg-[var(--white-color)] flex flex-col justify-center items-center`}
+              className={`w-[50%] max-md:w-full h-[100%] cursor-pointer p-[3rem] bg-[var(--white-color)] flex flex-col justify-center items-center`}
               animate={{
-                width:
-                  hoveredSection === "designer" || role === "designer"
-                    ? "65%"
-                    : hoveredSection === "engineer" || role === "engineer"
-                    ? "35%"
-                    : "50%",
+                ...(isMobile
+                  ? {
+                      height:
+                        hoveredSection === "designer" || role === "designer"
+                          ? "65%"
+                          : hoveredSection === "engineer" || role === "engineer"
+                            ? "35%"
+                            : "100%",
+                    }
+                  : {
+                      width:
+                        hoveredSection === "designer" || role === "designer"
+                          ? "65%"
+                          : hoveredSection === "engineer" || role === "engineer"
+                            ? "35%"
+                            : "50%",
+                    }),
                 opacity: role === "engineer" ? 0.7 : 1,
                 zIndex: role === "engineer" ? 1 : 2,
                 filter:
@@ -122,7 +165,7 @@ function App() {
               transition={{ type: "tween", duration: 1.5, ease: "anticipate" }}
               style={{ transformOrigin: "left" }}
             >
-              <div className="inline-block w-[35rem] mb-[20rem]">
+              <div className="inline-block  w-[35rem] mb-[20rem] max-md:mb-0">
                 <h2
                   className={`${fonts.mainHeading} text-[color:var(--background-color)]`}
                 >
@@ -130,7 +173,7 @@ function App() {
                   designer
                 </h2>
 
-                <div className="flex flex-wrap gap-[.8rem]">
+                <div className="flex flex-wrap gap-[.8rem] max-md:hidden">
                   {sope[0].tags.map((tag, index) => (
                     <div
                       key={index}
@@ -158,14 +201,25 @@ function App() {
               }}
               onMouseEnter={() => setHoveredSection("engineer")}
               onMouseLeave={() => setHoveredSection(null)}
-              className={`w-[50%] h-[100%] cursor-pointer flex flex-col justify-center items-center p-[3rem] bg-[var(--background-color-2)] text-[color:var(--white-color)]`}
+              className={`w-[50%] max-md:w-full h-[100%] cursor-pointer flex flex-col justify-center items-center p-[3rem] bg-[var(--background-color-2)] text-[color:var(--white-color)]`}
               animate={{
-                width:
-                  hoveredSection === "engineer" || role === "engineer"
-                    ? "65%"
-                    : hoveredSection === "designer" || role === "designer"
-                    ? "35%"
-                    : "50%",
+                ...(isMobile
+                  ? {
+                      height:
+                        hoveredSection === "engineer" || role === "engineer"
+                          ? "65%"
+                          : hoveredSection === "designer" || role === "designer"
+                            ? "35%"
+                            : "100%",
+                    }
+                  : {
+                      width:
+                        hoveredSection === "engineer" || role === "engineer"
+                          ? "65%"
+                          : hoveredSection === "designer" || role === "designer"
+                            ? "35%"
+                            : "50%",
+                    }),
                 opacity: role === "designer" ? 0.7 : 1,
                 zIndex: role === "designer" ? 1 : 2,
                 filter:
@@ -176,11 +230,11 @@ function App() {
               transition={{ type: "tween", duration: 1.5, ease: "anticipate" }}
               style={{ transformOrigin: "right" }}
             >
-              <div className="inline-block mt-[20rem]">
+              <div className="inline-block mt-[20rem] max-md:mt-0">
                 <h2
                   className={`${fonts.mainHeading} text-[color:var(--white-color)]`}
                 >{`<Engineer />`}</h2>
-                <div className={`${fonts.heroSmall}`}>
+                <div className={`${fonts.heroSmall} max-md:hidden`}>
                   <pre>
                     <code>
                       <span className="text-[color:var(--emphasis-color)]">
@@ -228,7 +282,7 @@ function App() {
         </header>
         <main className="relative bg-cover bg-center bg-no-repeat p-[12rem] max-lg:px-[4rem] h-[100vh] min-h-[80rem] overflow-hidden">
           <motion.div
-            className="absolute left-[5rem] bottom-0 inset-0 bg-bottom bg-cover bg-no-repeat scale-[.7]"
+            className="absolute left-[5rem] bottom-0 inset-0 bg-bottom bg-cover bg-no-repeat scale-[.7] max-lg:hidden"
             intial={{ x: -50 }}
             animate={{ x: 0 }}
             style={{
@@ -236,12 +290,12 @@ function App() {
                 section === "about" && role
                   ? sope1
                   : section === "experience"
-                  ? sope2
-                  : section === "skills"
-                  ? sope3
-                  : section === "projects"
-                  ? sope4
-                  : undefined
+                    ? sope2
+                    : section === "skills"
+                      ? sope3
+                      : section === "projects"
+                        ? sope4
+                        : undefined
               })`,
               width: "80rem",
               bottom: "-20rem",
@@ -249,7 +303,7 @@ function App() {
             }}
           />
           {role && (
-            <div className="flex h-full items-start gap-[4rem]">
+            <div className="flex max-md:flex-col h-full items-start gap-[4rem]">
               <NavDetailsLinks />
               <section className="flex flex-col w-[60%] overflow-y-auto overflow-x-hidden h-full">
                 <AnimatePresence mode="wait">

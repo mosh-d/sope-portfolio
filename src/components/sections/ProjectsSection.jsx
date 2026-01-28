@@ -164,7 +164,7 @@ export default function ProjectsSection() {
   return (
     <div className="w-full flex flex-col gap-[12rem] items-center py-[10rem] max-lg:px-[0]">
       {sope[dataIndex].projects.map((project, index) => (
-        <a href={project.url} target="blank" className="w-[70%]">
+        <a href={project.url} target="blank" className="w-[70%] max-lg:w-[90%]">
           <motion.div
             key={index}
             whileHover={{

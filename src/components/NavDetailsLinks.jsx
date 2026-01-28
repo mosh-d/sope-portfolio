@@ -16,6 +16,7 @@ import sope4 from "../assets/sope-pics/sope-4.png";
 
 import sope from "../utils/data.js";
 import fonts from "../utils/fonts.js";
+import MobileMenu from "./MobileMenu.jsx";
 
 export default function NavDetailsLinks() {
   const { role, dataIndex, section, setSection } = useContext(RoleContext);
@@ -36,8 +37,9 @@ export default function NavDetailsLinks() {
           Information and Communication Science - (Nov 2017 - Dec 2022)
         </p>
       </div>
-      <nav>
-        <ul className="flex flex-col gap-[3.6rem] w-max">
+      <nav className="relative">
+        <MobileMenu />
+        <ul className="flex flex-col gap-[3.6rem] w-max max-md:hidden">
           {[
             ["about", "ABOUT"],
             ["experience", "EXPERIENCE"],
@@ -85,7 +87,7 @@ export default function NavDetailsLinks() {
         <motion.li
           className="cursor-pointer inline-flex"
           whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: .9 }}
+          whileTap={{ scale: 0.9 }}
         >
           <a href="https://github.com/mosh-d" target="blank">
             <FaGithub size="3.5rem" color="var(--accent-color)" />
@@ -95,7 +97,7 @@ export default function NavDetailsLinks() {
         <motion.li
           className="cursor-pointer inline-flex"
           whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: .9 }}
+          whileTap={{ scale: 0.9 }}
         >
           <a href="https://www.linkedin.com/in/sope-azeez/" target="blank">
             <TiSocialLinkedinCircular
@@ -108,9 +110,12 @@ export default function NavDetailsLinks() {
         <motion.li
           className="cursor-pointer inline-flex"
           whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: .9 }}
+          whileTap={{ scale: 0.9 }}
         >
-          <a href="https://wa.me/2348106125405?text=Hello%20I%20saw%20your%20portfolio%20online" target="blank">
+          <a
+            href="https://wa.me/2348106125405?text=Hello%20I%20saw%20your%20portfolio%20online"
+            target="blank"
+          >
             <IoLogoWhatsapp size="3.5rem" color="var(--accent-color)" />
           </a>
         </motion.li>
@@ -118,7 +123,7 @@ export default function NavDetailsLinks() {
         <motion.li
           className="cursor-pointer inline-flex"
           whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: .9 }}
+          whileTap={{ scale: 0.9 }}
         >
           <a href="https://www.behance.net/sopeazeez" target="blank">
             <IoLogoBehance size="3.5rem" color="var(--accent-color)" />

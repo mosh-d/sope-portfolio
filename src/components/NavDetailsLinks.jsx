@@ -87,7 +87,7 @@ export default function NavDetailsLinks() {
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: .9 }}
         >
-          <a href="">
+          <a href="https://github.com/mosh-d" target="blank">
             <FaGithub size="3.5rem" color="var(--accent-color)" />
           </a>
         </motion.li>
@@ -97,7 +97,7 @@ export default function NavDetailsLinks() {
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: .9 }}
         >
-          <a href="">
+          <a href="https://www.linkedin.com/in/sope-azeez/" target="blank">
             <TiSocialLinkedinCircular
               size="4.5rem"
               color="var(--accent-color)"
@@ -110,7 +110,7 @@ export default function NavDetailsLinks() {
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: .9 }}
         >
-          <a href="">
+          <a href="https://wa.me/2348106125405?text=Hello%20I%20saw%20your%20portfolio%20online" target="blank">
             <IoLogoWhatsapp size="3.5rem" color="var(--accent-color)" />
           </a>
         </motion.li>
@@ -120,7 +120,7 @@ export default function NavDetailsLinks() {
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: .9 }}
         >
-          <a href="">
+          <a href="https://www.behance.net/sopeazeez" target="blank">
             <IoLogoBehance size="3.5rem" color="var(--accent-color)" />
           </a>
         </motion.li>

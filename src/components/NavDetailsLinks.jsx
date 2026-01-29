@@ -22,23 +22,25 @@ export default function NavDetailsLinks() {
   const { role, dataIndex, section, setSection } = useContext(RoleContext);
 
   return (
-    <aside className="w-[40%] bg-bottom bg-cover bg-center bg-no-repeat flex flex-col justify-between h-full gap-[12rem]">
-      <div>
-        <h3 className={`${fonts.mainHeading}`}>Sope Azeez</h3>
-        <h4 className={`${fonts.roleTitle} text-[color:var(--text-color)]`}>
-          {sope[dataIndex].title}
-        </h4>
-        <p className={`${fonts.eduTitle}`}>
-          <em className="font-bold text-[color:var(--white-color)]">Msc</em>{" "}
-          Project Management - (Nov 2023 - Sep 2025)
-        </p>
-        <p className={`${fonts.eduTitle}`}>
-          <em className="font-bold text-[color:var(--white-color)]">Bsc</em>{" "}
-          Information and Communication Science - (Nov 2017 - Dec 2022)
-        </p>
+    <aside className="w-[40%] max-md:w-full bg-bottom bg-cover bg-center bg-no-repeat flex flex-col justify-between h-full max-md:h-auto gap-[12rem] max-md:gap-[4rem]">
+      <div className="max-md:flex max-md:flex-row max-md:w-full max-md:justify-between">
+        <div>
+          <h3 className={`${fonts.mainHeading} max-sm:text-[4rem]`}>Sope Azeez</h3>
+          <h4 className={`${fonts.roleTitle} text-[color:var(--text-color)]`}>
+            {sope[dataIndex].title}
+          </h4>
+          <p className={`${fonts.eduTitle}`}>
+            <em className="font-bold text-[color:var(--white-color)]">Msc</em>{" "}
+            Project Management - (Nov 2023 - Sep 2025)
+          </p>
+          <p className={`${fonts.eduTitle}`}>
+            <em className="font-bold text-[color:var(--white-color)]">Bsc</em>{" "}
+            Information and Communication Science - (Nov 2017 - Dec 2022)
+          </p>
+        </div>
+        <MobileMenu />
       </div>
       <nav className="relative">
-        <MobileMenu />
         <ul className="flex flex-col gap-[3.6rem] w-max max-md:hidden">
           {[
             ["about", "ABOUT"],

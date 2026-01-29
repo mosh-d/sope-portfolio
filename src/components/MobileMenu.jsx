@@ -42,7 +42,7 @@ export default function MobileMenu() {
   return (
     <div className="hidden max-md:block">
       <button onClick={toggleMenu} className="p-2 z-50 relative">
-        <RxHamburgerMenu size="3.5rem" color="var(--accent-color)" />
+        <RxHamburgerMenu size="4.5rem" color="var(--emphasis-color)" />
       </button>
 
       <AnimatePresence>

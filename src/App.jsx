@@ -20,6 +20,7 @@ import sope4 from "./assets/sope-pics/sope-4.png";
 
 // Icons
 import { GrLanguage } from "react-icons/gr";
+import { p } from "framer-motion/client";
 
 function App() {
   const [role, setRole] = useState("");
@@ -146,6 +147,7 @@ function App() {
                           : hoveredSection === "engineer" || role === "engineer"
                             ? "35%"
                             : "100%",
+                      width: "100%",
                     }
                   : {
                       width:
@@ -154,6 +156,7 @@ function App() {
                           : hoveredSection === "engineer" || role === "engineer"
                             ? "35%"
                             : "50%",
+                      height: "100%",
                     }),
                 opacity: role === "engineer" ? 0.7 : 1,
                 zIndex: role === "engineer" ? 1 : 2,
@@ -211,6 +214,7 @@ function App() {
                           : hoveredSection === "designer" || role === "designer"
                             ? "35%"
                             : "100%",
+                      width: "100%",
                     }
                   : {
                       width:
@@ -219,6 +223,7 @@ function App() {
                           : hoveredSection === "designer" || role === "designer"
                             ? "35%"
                             : "50%",
+                      height: "100%",
                     }),
                 opacity: role === "designer" ? 0.7 : 1,
                 zIndex: role === "designer" ? 1 : 2,
@@ -280,7 +285,7 @@ function App() {
             </motion.section>
           </div>
         </header>
-        <main className="relative bg-cover bg-center bg-no-repeat p-[12rem] max-lg:px-[4rem] h-[100vh] min-h-[80rem] overflow-hidden">
+        <main className="relative bg-cover bg-center bg-no-repeat p-[12rem] max-md:p-[4rem] max-lg:px-[4rem] max-sm:px-[2rem] h-[100vh] min-h-[80rem] overflow-hidden">
           <motion.div
             className="absolute left-[5rem] bottom-0 inset-0 bg-bottom bg-cover bg-no-repeat scale-[.7] max-lg:hidden"
             intial={{ x: -50 }}
@@ -305,7 +310,13 @@ function App() {
           {role && (
             <div className="flex max-md:flex-col h-full items-start gap-[4rem]">
               <NavDetailsLinks />
-              <section className="flex flex-col w-[60%] overflow-y-auto overflow-x-hidden h-full">
+              <div className="block md:hidden">
+                {section === "about" && <p className="text-[3rem]">ABOUT</p>}
+                {section === "experience" && <p className="text-[3rem]">EXPERIENCE</p>}
+                {section === "skills" && <p className="text-[3rem]">SKILLS</p>}
+                {section === "projects" && <p className="text-[3rem]">PROJECTS</p>}
+              </div>
+              <section className="flex flex-col w-[60%] max-md:w-full overflow-y-auto overflow-x-hidden h-full">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={section}

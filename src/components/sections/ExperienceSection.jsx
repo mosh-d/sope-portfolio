@@ -14,15 +14,15 @@ export default function ExperienceSection() {
   return (
     <div className="flex flex-col w-full gap-[12rem]">
       {sope[dataIndex].experience.map((experienceBlock, index) => (
-        <div key={index} className="flex gap-[2rem] w-full">
-          <div className={`${fonts.mainContent} w-[30%]`}>
+        <div key={index} className="flex max-md:flex-col gap-[2rem] w-full">
+          <div className={`${fonts.mainContent} w-[30%] max-md:w-full`}>
             {experienceBlock.duration}
           </div>
           <div
-            className={`${fonts.mainContent} flex flex-col gap-[1.8rem] w-[70%]`}
+            className={`${fonts.mainContent} flex flex-col gap-[1.8rem] w-[70%] max-md:w-full`}
           >
             <h3 className={`${fonts.jobTitle} `}>{experienceBlock.title}</h3>
-            <ul className="list-disc ml-6">
+            <ul className="list-disc ml-6 max-md:ml-[4rem]">
               {experienceBlock.descriptionPoints.map((point, pointIndex) => (
                 <li key={pointIndex}>{point}</li>
               ))}

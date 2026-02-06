@@ -3,8 +3,8 @@
 /* App-wide styles */
 :root {
   /* typography */
-  --font-primary: "Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont,
-    sans-serif;
+  --font-primary:
+    "Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-secondary: "Source Code Pro", monospace;
   --font-accent: "Lora", serif;
 
@@ -25,7 +25,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   min-height: 100%;
   margin: 0;
@@ -64,19 +65,6 @@ body {
   background-attachment: fixed;
 }
 
-/* body::before {
-  content: "";
-  position: fixed; 
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--background-color);
-  opacity: 0.9; 
-  pointer-events: none; 
-  z-index: -1;
-} */
-
 .font-primary {
   font-family: var(--font-primary);
 }
@@ -89,10 +77,31 @@ body {
   font-family: var(--font-accent);
 }
 
-/* .active {
-  background-color: var(--emphasis-color);
-  color: var(--white-color);
-  padding-left: 1rem;
-  padding-right: 4rem;
-  width: calc(width + 4rem); 
-} */
+/* SimpleBar Custom Scrollbar Styling */
+.simplebar-scrollbar::before {
+  background-color: white !important;
+  opacity: 0 !important;
+  border-radius: 7px;
+}
+
+.simplebar-scrollbar.simplebar-visible::before {
+  opacity: 1 !important;
+  background-color: white !important;
+}
+
+.simplebar-scrollbar:hover::before {
+  background-color: white !important;
+  opacity: 1 !important;
+}
+
+.simplebar-track.simplebar-vertical {
+  width: 5px;
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.simplebar-track.simplebar-horizontal {
+  height: 5px;
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 0.03);
+}

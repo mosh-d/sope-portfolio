@@ -1,6 +1,6 @@
 import "simplebar-react/dist/simplebar.min.css";
 import SimpleBar from "simplebar-react";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import sope from "./utils/data.js";
 import fonts from "./utils/fonts.js";
 import { RoleContext } from "./store/role-context.jsx";
@@ -33,6 +33,7 @@ function App() {
 
   const [hoveredSection, setHoveredSection] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const scrollRef = useRef(null);
 
   // Detect mobile screen size (max-md = < 768px)
   useEffect(() => {
@@ -60,7 +61,10 @@ function App() {
     <RoleContext.Provider
       value={{ role, setRole, dataIndex, section, setSection }}
     >
-      <SimpleBar style={{ maxHeight: "100vh" }}>
+      <SimpleBar
+        scrollableNodeProps={{ ref: scrollRef }}
+        style={{ maxHeight: "100vh" }}
+      >
         <div className="overflow-x-hidden">
           <div
             data-component="Language selector"
@@ -131,10 +135,12 @@ function App() {
                 onClick={() => {
                   setRole("designer");
                   setTimeout(() => {
-                    window.scrollTo({
-                      top: document.body.scrollHeight,
-                      behavior: "smooth",
-                    });
+                    if (scrollRef.current) {
+                      scrollRef.current.scrollTo({
+                        top: scrollRef.current.scrollHeight,
+                        behavior: "smooth",
+                      });
+                    }
                   }, 1500);
                 }}
                 onMouseEnter={() => setHoveredSection("designer")}
@@ -206,10 +212,12 @@ function App() {
                 onClick={() => {
                   setRole("engineer");
                   setTimeout(() => {
-                    window.scrollTo({
-                      top: document.body.scrollHeight,
-                      behavior: "smooth",
-                    });
+                    if (scrollRef.current) {
+                      scrollRef.current.scrollTo({
+                        top: scrollRef.current.scrollHeight,
+                        behavior: "smooth",
+                      });
+                    }
                   }, 1500);
                 }}
                 onMouseEnter={() => setHoveredSection("engineer")}

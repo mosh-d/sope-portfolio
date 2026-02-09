@@ -14,18 +14,24 @@ import sope2 from "../assets/sope-pics/sope-2.png";
 import sope3 from "../assets/sope-pics/sope-3.png";
 import sope4 from "../assets/sope-pics/sope-4.png";
 
-import sope from "../utils/data.js";
+import translations from "../utils/translations.js";
 import fonts from "../utils/fonts.js";
 import MobileMenu from "./MobileMenu.jsx";
 
 export default function NavDetailsLinks() {
-  const { role, dataIndex, section, setSection } = useContext(RoleContext);
+  const { role, dataIndex, section, setSection, language, sope } =
+    useContext(RoleContext);
+
+  // Get translations based on language
+  const t = language === "Japanese" ? translations.ja : translations.en;
 
   return (
     <aside className="w-[40%] max-md:w-full bg-bottom bg-cover bg-no-repeat flex flex-col justify-between h-full max-md:h-auto gap-[12rem] max-md:gap-[4rem] max-sm:gap-[1rem]">
       <div className="max-md:flex max-md:flex-row max-md:w-full max-md:justify-between">
         <div>
-          <h3 className={`${fonts.mainHeading} max-sm:text-[4rem]`}>Sope Azeez</h3>
+          <h3 className={`${fonts.mainHeading} max-sm:text-[4rem]`}>
+            {t.name}
+          </h3>
           <h4 className={`${fonts.roleTitle} text-[color:var(--text-color)]`}>
             {sope[dataIndex].title}
           </h4>
@@ -43,10 +49,10 @@ export default function NavDetailsLinks() {
       <nav className="relative">
         <ul className="flex flex-col gap-[3.6rem] w-max max-md:hidden">
           {[
-            ["projects", "PROJECTS"],
-            ["experience", "EXPERIENCE"],
-            ["skills", "SKILLS"],
-            ["about", "ABOUT"],
+            ["projects", t.projects],
+            ["experience", t.experience],
+            ["skills", t.skills],
+            ["about", t.about],
           ].map(([key, label]) => (
             <motion.li
               key={key}

@@ -1,15 +1,19 @@
 import { useContext, useState } from "react";
 import { RoleContext } from "../store/role-context.jsx";
 import { motion, AnimatePresence } from "motion/react";
+import translations from "../utils/translations.js";
 import fonts from "../utils/fonts.js";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 
 export default function MobileMenu() {
-  const { section, setSection } = useContext(RoleContext);
+  const { section, setSection, language } = useContext(RoleContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  // Get translations based on language
+  const t = language === "Japanese" ? translations.ja : translations.en;
 
   const menuVariants = {
     closed: {
@@ -33,10 +37,10 @@ export default function MobileMenu() {
   };
 
   const navItems = [
-    ["about", "ABOUT"],
-    ["experience", "EXPERIENCE"],
-    ["skills", "SKILLS"],
-    ["projects", "PROJECTS"],
+    ["about", t.about],
+    ["experience", t.experience],
+    ["skills", t.skills],
+    ["projects", t.projects],
   ];
 
   return (

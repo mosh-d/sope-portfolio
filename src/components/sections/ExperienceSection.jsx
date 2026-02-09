@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { RoleContext } from "../../store/role-context";
 
-import sope from "../../utils/data";
 import fonts from "../../utils/fonts";
 
 export default function ExperienceSection() {
-  const { role, dataIndex } = useContext(RoleContext);
+  const { role, dataIndex, sope } = useContext(RoleContext);
 
   if (dataIndex === undefined) {
     return null;
@@ -50,7 +49,12 @@ export default function ExperienceSection() {
               {role === "designer" && (
                 <div className="flex gap-[1.8rem] w-full flex-wrap">
                   {experienceBlock.tags.map((tag, index) => (
-                    <span key={index} className={`${fonts.mainContent} bg-[var(--emphasis-color)] text-[var(--white-color)] rounded-md px-[.8rem] py-[.2rem]`}>#{tag}</span>
+                    <span
+                      key={index}
+                      className={`${fonts.mainContent} bg-[var(--emphasis-color)] text-[var(--white-color)] rounded-md px-[.8rem] py-[.2rem]`}
+                    >
+                      #{tag}
+                    </span>
                   ))}
                 </div>
               )}

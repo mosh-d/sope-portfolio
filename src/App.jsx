@@ -1,7 +1,9 @@
 import "simplebar-react/dist/simplebar.min.css";
 import SimpleBar from "simplebar-react";
 import { useState, useMemo, useEffect, useRef } from "react";
-import sope from "./utils/data.js";
+import sopeEn from "./utils/data.js";
+import sopeJa from "./utils/data-ja.js";
+import translations from "./utils/translations.js";
 import fonts from "./utils/fonts.js";
 import { RoleContext } from "./store/role-context.jsx";
 import { motion } from "motion/react";
@@ -51,6 +53,16 @@ function App() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Select data based on language
+  const sope = useMemo(() => {
+    return language === "Japanese" ? sopeJa : sopeEn;
+  }, [language]);
+
+  // Get translations based on language
+  const t = useMemo(() => {
+    return language === "Japanese" ? translations.ja : translations.en;
+  }, [language]);
+
   const dataIndex = useMemo(() => {
     if (role === "designer") return 0;
     if (role === "engineer") return 1;
@@ -59,7 +71,16 @@ function App() {
 
   return (
     <RoleContext.Provider
-      value={{ role, setRole, dataIndex, section, setSection }}
+      value={{
+        role,
+        setRole,
+        dataIndex,
+        section,
+        setSection,
+        language,
+        setLanguage,
+        sope,
+      }}
     >
       <SimpleBar
         scrollableNodeProps={{ ref: scrollRef }}
@@ -70,8 +91,8 @@ function App() {
             data-component="Language selector"
             className="flex absolute m-[1rem] gap-[1rem] z-20"
           >
-            <GrLanguage color="var(--emphasis-color)" size="2rem" />
-            <menu className="flex gap-[.5rem] h-full items-end mt-[.2rem]">
+            <GrLanguage className="text-[2rem] max-sm:text-[3rem]" color="var(--emphasis-color)"  />
+            <menu className="flex items-center gap-[.5rem] h-full items-end mt-[.2rem]">
               <button
                 onClick={() => setLanguage("English")}
                 className="text-[color:var(--emphasis-color)] cursor-pointer"
@@ -82,7 +103,7 @@ function App() {
                       : "transparent",
                 }}
               >
-                <span className={`${fonts.heroSmall}`}>Eng</span>
+                <span className={`${fonts.heroSmall} max-sm:text-[2rem]`}>Eng</span>
               </button>
               <button
                 onClick={() => setLanguage("Japanese")}
@@ -94,7 +115,7 @@ function App() {
                       : "transparent",
                 }}
               >
-                <span className={`${fonts.heroSmall}`}>日本語</span>
+                <span className={`${fonts.heroSmall} max-sm:text-[2rem]`}>日本語</span>
               </button>
             </menu>
           </div>
@@ -110,7 +131,7 @@ function App() {
                 ease: "linear",
               }}
             >
-              Welcome to Sope's Portfolio
+              {t.welcomeMessage}
             </motion.h1>
           </div>
           <header className="bg-[color:var(--background-color)] h-[70vh] min-h-[70rem] shadow-xl z-20">
@@ -126,7 +147,7 @@ function App() {
                   ease: "linear",
                 }}
               >
-                Welcome to Sope's Portfolio
+                {t.welcomeMessage}
               </motion.h1>
             </div>
             <div className="flex h-[100%] max-md:flex-col">
@@ -189,7 +210,7 @@ function App() {
                     <span className="text-[color:var(--emphasis-color)]">
                       #
                     </span>
-                    designer
+                    {t.designer}
                   </h2>
 
                   <div className="flex flex-wrap gap-[.8rem] max-md:hidden">
@@ -262,7 +283,7 @@ function App() {
                 <div className="inline-block mt-[20rem] max-md:mt-0">
                   <h2
                     className={`${fonts.mainHeading} text-[color:var(--white-color)]`}
-                  >{`<Engineer />`}</h2>
+                  >{`<${t.engineer} />`}</h2>
                   <div className={`${fonts.heroSmall} max-md:hidden`}>
                     <pre>
                       <code>
@@ -335,15 +356,17 @@ function App() {
               <div className="flex max-md:flex-col h-full items-start gap-[4rem]">
                 <NavDetailsLinks />
                 <div className="block md:hidden">
-                  {section === "about" && <p className="text-[3rem]">ABOUT</p>}
+                  {section === "about" && (
+                    <p className="text-[3rem]">{t.about}</p>
+                  )}
                   {section === "experience" && (
-                    <p className="text-[3rem]">EXPERIENCE</p>
+                    <p className="text-[3rem]">{t.experience}</p>
                   )}
                   {section === "skills" && (
-                    <p className="text-[3rem]">SKILLS</p>
+                    <p className="text-[3rem]">{t.skills}</p>
                   )}
                   {section === "projects" && (
-                    <p className="text-[3rem]">PROJECTS</p>
+                    <p className="text-[3rem]">{t.projects}</p>
                   )}
                 </div>
                 <section className="flex flex-col w-[60%] max-md:w-full h-full max-md:flex-1 max-md:min-h-0">
@@ -376,7 +399,7 @@ function App() {
                 <p
                   className={`${fonts.initialText} text-[color:var(--text-color)]`}
                 >
-                  Pick a side to begin.
+                  {t.pickSide}
                 </p>
               </section>
             ) : undefined}

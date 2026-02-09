@@ -19,11 +19,10 @@ import { FaPaintBrush } from "react-icons/fa";
 import { FaGoogle } from "react-icons/fa";
 import { GiBrain } from "react-icons/gi";
 
-import sope from "../../utils/data";
 import fonts from "../../utils/fonts";
 
 export default function SkillsSection() {
-  const { dataIndex, role } = useContext(RoleContext);
+  const { dataIndex, role, sope } = useContext(RoleContext);
 
   const icons = {
     react: <FaReact size="3.5rem" color="var(--emphasis-color)" />,
@@ -67,7 +66,10 @@ export default function SkillsSection() {
       {role === "designer" && (
         <div className="flex flex-col w-full gap-[4.8rem] overflow-x-hidden">
           {sope[0].skills.map((skill, index) => (
-            <div key={index} className="flex flex-col w-[90%] gap-[3.6rem] justify-center items-center p-[4.8rem] border border-[var(--white-color)]/10 rounded-2xl">
+            <div
+              key={index}
+              className="flex flex-col w-[90%] gap-[3.6rem] justify-center items-center p-[4.8rem] border border-[var(--white-color)]/10 rounded-2xl"
+            >
               <div className="flex flex-col items-center">
                 <div>{icons[skill.icon]}</div>
                 <h4 className={`${fonts.skillHeading} `}>{skill.title}</h4>

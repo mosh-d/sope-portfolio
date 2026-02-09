@@ -92,7 +92,7 @@ function App() {
             className="flex absolute m-[1rem] gap-[1rem] z-20"
           >
             <GrLanguage className="text-[2rem] max-sm:text-[3rem]" color="var(--emphasis-color)"  />
-            <menu className="flex items-center gap-[.5rem] h-full items-end mt-[.2rem]">
+            <menu className="flex items-center gap-[.5rem] h-full  mt-[.2rem]">
               <button
                 onClick={() => setLanguage("English")}
                 className="text-[color:var(--emphasis-color)] cursor-pointer"

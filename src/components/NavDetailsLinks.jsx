@@ -29,7 +29,7 @@ export default function NavDetailsLinks() {
     <aside className="w-[40%] max-md:w-full bg-bottom bg-cover bg-no-repeat flex flex-col justify-between h-full max-md:h-auto gap-[12rem] max-md:gap-[4rem] max-sm:gap-[1rem]">
       <div className="max-md:flex max-md:flex-row max-md:w-full max-md:justify-between">
         <div>
-          <h3 className={`${fonts.mainHeading} max-sm:text-[4rem]`}>
+          <h3 className={`${fonts.mainHeading} max-sm:text-[4rem] text-white`}>
             {t.name}
           </h3>
           <h4 className={`${fonts.roleTitle} text-[color:var(--text-color)]`}>

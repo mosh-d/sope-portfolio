@@ -190,7 +190,7 @@ export default function ProjectsSection() {
             className={`w-[100%] gap-[1rem] bg-no-repeat bg-cover bg-blend-multiply aspect-video rounded-2xl border border-[var(--white-color)]/20 flex flex-col justify-end p-[3.6rem]`}
           >
             <h4
-              className={`${fonts.roleTitle} font-bold text-[color:var(white-color)] max-lg:text-[1.6rem]`}
+              className={`${fonts.roleTitle} font-bold text-white max-lg:text-[1.6rem]`}
             >
               {project.title}
             </h4>

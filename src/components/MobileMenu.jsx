@@ -79,7 +79,7 @@ export default function MobileMenu() {
                     className="cursor-pointer"
                   >
                     <span
-                      className={`${fonts.mainHeading}`}
+                      className={`${fonts.mainContent} text-[2.4rem]`}
                       style={{
                         color:
                           section === key

@@ -57,7 +57,7 @@ export default function SkillsSection() {
               className="flex flex-col items-center border border-white/10 rounded-2xl py-[2rem] px-[2rem]"
             >
               <div>{icons[skill.icon]}</div>
-              <h4 className={`${fonts.skillHeading} `}>{skill.title}</h4>
+              <h4 className={`${fonts.skillHeading} text-white`}>{skill.title}</h4>
             </div>
           ))}
         </div>
@@ -72,7 +72,7 @@ export default function SkillsSection() {
             >
               <div className="flex flex-col items-center">
                 <div>{icons[skill.icon]}</div>
-                <h4 className={`${fonts.skillHeading} `}>{skill.title}</h4>
+                <h4 className={`${fonts.skillHeading} text-white`}>{skill.title}</h4>
               </div>
               <hr className="w-full opacity-10" />
               <div

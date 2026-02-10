@@ -92,7 +92,7 @@ function App() {
             className="flex absolute m-[1rem] gap-[1rem] z-20"
           >
             <GrLanguage className="text-[2rem] max-sm:text-[3rem]" color="var(--emphasis-color)"  />
-            <menu className="flex items-center gap-[.5rem] h-full  mt-[.2rem]">
+            <menu className="flex items-center gap-[.5rem] h-full mt-[.2rem]">
               <button
                 onClick={() => setLanguage("English")}
                 className="text-[color:var(--emphasis-color)] cursor-pointer"
@@ -357,16 +357,16 @@ function App() {
                 <NavDetailsLinks />
                 <div className="block md:hidden">
                   {section === "about" && (
-                    <p className="text-[3rem]">{t.about}</p>
+                    <p className="text-[3rem] text-white">{t.about}</p>
                   )}
                   {section === "experience" && (
-                    <p className="text-[3rem]">{t.experience}</p>
+                    <p className="text-[3rem] text-white">{t.experience}</p>
                   )}
                   {section === "skills" && (
-                    <p className="text-[3rem]">{t.skills}</p>
+                    <p className="text-[3rem] text-white">{t.skills}</p>
                   )}
                   {section === "projects" && (
-                    <p className="text-[3rem]">{t.projects}</p>
+                    <p className="text-[3rem] text-white">{t.projects}</p>
                   )}
                 </div>
                 <section className="flex flex-col w-[60%] max-md:w-full h-full max-md:flex-1 max-md:min-h-0">

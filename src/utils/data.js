@@ -11,8 +11,12 @@ const sope = [
       "Case Studies",
     ],
     title: "UI/UX Designer",
-    about:
-      "I’m a highly creative UX designer with a strong background in art, animation, and front-end development. Deep understanding of UI/UX design concepts leads to a strong passion for designing user-centered solutions that are interactive, functional, accessible, and user-friendly. Proficient in front-end development using HTML, CSS, and JavaScript, which can aid a smooth and efficient transition from design to development. I also bring a business lens to my work. With a Masters degree in Project Management, I understand how to balance stakeholder expectations with design and business requirements—navigating time, cost, and quality constraints to deliver real value. I’m passionate about Japanese culture. I enjoy Japanese fashion, TV shows, anime, and karate. I speak 5 languages: Design, Engineering, Business, English, and Japanese.",
+    about1: "I’m a user-centered designer who believes great design begins with understanding people before pixels. My background in art and animation allows me to approach interface design with a strong sense of visual hierarchy, motion, and emotional engagement, ensuring that every interaction feels intentional and intuitive.",
+    about2: "I specialize in translating complex requirements into clear, accessible, and elegant user experiences. Whether designing booking flows, dashboards, or informational websites, I focus on reducing friction, simplifying decision-making, and guiding users naturally through digital environments.",
+    about3: "My process is structured and research-driven. I begin by understanding user needs and business objectives, then move through wireframing, prototyping, and iterative refinement. I prioritize usability, accessibility, and clarity, ensuring that visual decisions are supported by functional logic rather than aesthetics alone.",
+    about4: "Because I also build what I design, my interfaces are grounded in technical feasibility. I design with implementation in mind, considering responsiveness, component reusability, scalability, and real-world constraints from the very beginning. This allows for smoother handoffs and more efficient development cycles.",
+    about5: "I bring a strong business perspective to design decisions. With a Master’s degree in Project Management, I understand how to balance creativity with scope, time, and budget constraints. My goal is not just to create visually appealing products, but to design solutions that deliver measurable value and long-term impact.",
+    about6: "At the core of my design philosophy is clarity. ie. clarity of communication, clarity of structure, and clarity of purpose. I aim to create experiences that are not only visually refined but also meaningful, functional, and aligned with both user needs and business strategy.",
     experience: [
       {
         duration: "Jun 2024 - Present",
@@ -172,8 +176,12 @@ const sope = [
       backEnd: ["Node.js", "Express.js", "MongoDB", "PostgreSQL"],
     },
     title: "Full-stack Software Engineer",
-    about:
-      "While I can architect server-side logic and manage databases, my true strength lies in crafting interfaces that users remember and love to use.I also bring a business lens to my work. With a Masters degree in Project Management, I understand how to balance stakeholder expectations with technical and business requirements—navigating time, cost, and quality constraints to deliver real value. I’m passionate about Japanese culture. I enjoy Japanese fashion, TV shows, anime, and karate. I speak 5 languages: Design, Engineering, Business, English, and Japanese.",
+    about1: "I’m a full-stack software engineer focused on building reliable, production-ready systems that solve real business problems. I design and implement end-to-end web applications, combining scalable frontend architecture with backend systems that prioritize data integrity, maintainability, and performance.",
+    about2: "My experience includes building centralized API-driven systems using Node.js, Express, and PostgreSQL to support multiple client-facing applications. I’ve implemented transactional database workflows to preserve data consistency and mitigate issues such as double bookings in reservation systems. I approach backend logic with careful attention to validation, system boundaries, and real-world edge cases.",
+    about3: "On the frontend, I build modern, component-driven applications using React and Next.js, ensuring seamless API integration, state management, and responsive user experiences. I value clean architecture, modular design, and codebases that scale with product growth.",
+    about4: "I’m comfortable owning systems end-to-end, from requirements gathering and architectural planning to implementation, deployment, and ongoing maintenance. I regularly collaborate with stakeholders to translate business needs into technical decisions, balancing performance, usability, and long-term maintainability.",
+    about5: "With a Master’s degree in Project Management, I bring structured thinking to engineering work. I understand how technical decisions affect cost, time, and operational risk, and I communicate tradeoffs clearly to both technical and non-technical stakeholders.",
+    about6: "I don’t just build features, I build systems that are dependable, scalable, and aligned with business goals.",
     experience: [
       {
         duration: "May 2025 - Present",

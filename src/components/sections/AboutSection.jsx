@@ -9,7 +9,17 @@ export default function AboutSection() {
 
   return (
     <>
-      <p className={`${fonts.mainContent}`}>{sope[dataIndex].about}</p>
+      <p className={`${fonts.mainContent}`}>{sope[dataIndex].about1}</p>
+      <br />
+      <p className={`${fonts.mainContent}`}>{sope[dataIndex].about2}</p>
+      <br />
+      <p className={`${fonts.mainContent}`}>{sope[dataIndex].about3}</p>
+      <br />
+      <p className={`${fonts.mainContent}`}>{sope[dataIndex].about4}</p>
+      <br />
+      <p className={`${fonts.mainContent}`}>{sope[dataIndex].about5}</p>
+      <br />
+      <p className={`${fonts.mainContent}`}>{sope[dataIndex].about6}</p>
     </>
   );
 }

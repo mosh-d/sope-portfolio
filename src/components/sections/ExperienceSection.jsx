@@ -11,7 +11,7 @@ export default function ExperienceSection() {
   }
 
   return (
-    <div className="flex flex-col w-full gap-[12rem] pr-[2.4rem]">
+    <div className="flex flex-col p-[1rem] w-full gap-[12rem] pr-[2.4rem]">
       {sope[dataIndex].experience.map((experienceBlock, index) => (
         <div key={index} className="flex max-md:flex-col gap-[2rem] w-full">
           <div className={`${fonts.mainContent} w-[30%] max-md:w-full`}>

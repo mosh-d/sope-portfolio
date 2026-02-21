@@ -369,7 +369,7 @@ function App() {
                     <p className="text-[3rem] text-white">{t.projects}</p>
                   )}
                 </div>
-                <section className="flex flex-col w-[60%] max-md:w-full h-full max-md:flex-1 max-md:min-h-0">
+                <section className="flex flex-col border border-white/20 px-[1rem] bg-black/20 rounded-2xl w-[60%] max-md:w-full h-full max-md:flex-1 max-md:min-h-0">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={section}

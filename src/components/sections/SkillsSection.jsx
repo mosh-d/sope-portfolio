@@ -48,7 +48,7 @@ export default function SkillsSection() {
   };
 
   return (
-    <>
+    <div className="p-[1rem] max-sm:mr-[1rem]">
       {role === "engineer" && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {sope[1].skills.map((skill, index) => (
@@ -91,6 +91,6 @@ export default function SkillsSection() {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }

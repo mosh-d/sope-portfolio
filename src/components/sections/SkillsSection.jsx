@@ -64,11 +64,11 @@ export default function SkillsSection() {
       )}
 
       {role === "designer" && (
-        <div className="flex flex-col w-full gap-[4.8rem] overflow-x-hidden">
+        <div className="flex flex-col w-full align-center gap-[4.8rem] overflow-x-hidden">
           {sope[0].skills.map((skill, index) => (
             <div
               key={index}
-              className="flex flex-col w-[90%] gap-[3.6rem] justify-center items-center p-[4.8rem] border border-[var(--white-color)]/10 rounded-2xl"
+              className="flex flex-col w-[90%] gap-[3.6rem] self-center justify-center items-center p-[4.8rem] border border-[var(--white-color)]/10 rounded-2xl"
             >
               <div className="flex flex-col items-center">
                 <div>{icons[skill.icon]}</div>

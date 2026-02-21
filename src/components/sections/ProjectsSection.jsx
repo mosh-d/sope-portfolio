@@ -3,6 +3,7 @@ import { RoleContext } from "../../store/role-context.jsx";
 import { motion } from "framer-motion";
 
 import sope from "../../utils/data.js";
+import sopeJa from "../../utils/data-ja.js";
 import fonts from "../../utils/fonts.js";
 
 // Icons
@@ -40,7 +41,8 @@ import e_fiveClover from "../../assets/engineer-pics/fiveclover.png";
 import e_totesphere from "../../assets/engineer-pics/totesphere.png";
 
 export default function ProjectsSection() {
-  const { role, dataIndex, section, setSection } = useContext(RoleContext);
+  const { role, dataIndex, section, setSection, language } =
+    useContext(RoleContext);
 
   const icons = {
     react: (
@@ -163,45 +165,93 @@ export default function ProjectsSection() {
 
   return (
     <div className="w-full flex flex-col gap-[12rem] max-sm:gap-[6rem] items-center py-[10rem] max-lg:px-[0] max-sm:pr-[2rem]">
-      {sope[dataIndex].projects.map((project, index) => (
-        <a href={project.url} target="blank" className="w-[70%] max-lg:w-[90%] max-sm:w-[95%]">
-          <motion.div
-            key={index}
-            whileHover={{
-              scale: 1.02,
-              border: "1px solid var(--accent-color)",
-              boxShadow: "0px 0px 10rem hsla(175, 100%, 50%, .1)",
-              cursor: "pointer",
-            }}
-            whileTap={{
-              scale: 1,
-              border: "1px solid var(--emphasis-color)",
-              boxShadow: "0px 0px 10rem hsla(338, 100%, 50%, .1)",
-            }}
-            transition={{
-              type: "spring",
-              duration: 0.3,
-              stiffness: 400,
-              damping: 12,
-            }}
-            style={{
-              backgroundImage: `url(${images[project.image]})`,
-            }}
-            className={`w-[100%] gap-[1rem] bg-no-repeat bg-cover bg-blend-multiply aspect-video rounded-2xl border border-[var(--white-color)]/20 flex flex-col justify-end p-[3.6rem]`}
-          >
-            <h4
-              className={`${fonts.roleTitle} font-bold text-white max-lg:text-[1.6rem]`}
+      {language === "Japanese"
+        ? sopeJa[dataIndex].projects.map((project, index) => (
+            <a
+              href={project.url}
+              target="blank"
+              className="w-[70%] max-lg:w-[90%] max-sm:w-[95%]"
             >
-              {project.title}
-            </h4>
-            <div className="flex gap-[1rem]">
-              {project.logo.map((logo, index) => (
-                <div key={index}>{icons[logo]}</div>
-              ))}
-            </div>
-          </motion.div>
-        </a>
-      ))}
+              <motion.div
+                key={index}
+                whileHover={{
+                  scale: 1.02,
+                  border: "1px solid var(--accent-color)",
+                  boxShadow: "0px 0px 10rem hsla(175, 100%, 50%, .1)",
+                  cursor: "pointer",
+                }}
+                whileTap={{
+                  scale: 1,
+                  border: "1px solid var(--emphasis-color)",
+                  boxShadow: "0px 0px 10rem hsla(338, 100%, 50%, .1)",
+                }}
+                transition={{
+                  type: "spring",
+                  duration: 0.3,
+                  stiffness: 400,
+                  damping: 12,
+                }}
+                style={{
+                  backgroundImage: `url(${images[project.image]})`,
+                }}
+                className={`w-[100%] gap-[1rem] bg-no-repeat bg-cover bg-blend-multiply aspect-video rounded-2xl border border-[var(--white-color)]/20 flex flex-col justify-end p-[3.6rem]`}
+              >
+                <h4
+                  className={`${fonts.roleTitle} font-bold text-white max-lg:text-[1.6rem]`}
+                >
+                  {project.title}
+                </h4>
+                <div className="flex gap-[1rem]">
+                  {project.logo.map((logo, index) => (
+                    <div key={index}>{icons[logo]}</div>
+                  ))}
+                </div>
+              </motion.div>
+            </a>
+          ))
+        : sope[dataIndex].projects.map((project, index) => (
+            <a
+              href={project.url}
+              target="blank"
+              className="w-[70%] max-lg:w-[90%] max-sm:w-[95%]"
+            >
+              <motion.div
+                key={index}
+                whileHover={{
+                  scale: 1.02,
+                  border: "1px solid var(--accent-color)",
+                  boxShadow: "0px 0px 10rem hsla(175, 100%, 50%, .1)",
+                  cursor: "pointer",
+                }}
+                whileTap={{
+                  scale: 1,
+                  border: "1px solid var(--emphasis-color)",
+                  boxShadow: "0px 0px 10rem hsla(338, 100%, 50%, .1)",
+                }}
+                transition={{
+                  type: "spring",
+                  duration: 0.3,
+                  stiffness: 400,
+                  damping: 12,
+                }}
+                style={{
+                  backgroundImage: `url(${images[project.image]})`,
+                }}
+                className={`w-[100%] gap-[1rem] bg-no-repeat bg-cover bg-blend-multiply aspect-video rounded-2xl border border-[var(--white-color)]/20 flex flex-col justify-end p-[3.6rem]`}
+              >
+                <h4
+                  className={`${fonts.roleTitle} font-bold text-white max-lg:text-[1.6rem]`}
+                >
+                  {project.title}
+                </h4>
+                <div className="flex gap-[1rem]">
+                  {project.logo.map((logo, index) => (
+                    <div key={index}>{icons[logo]}</div>
+                  ))}
+                </div>
+              </motion.div>
+            </a>
+          ))}
     </div>
   );
 }

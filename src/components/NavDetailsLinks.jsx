@@ -8,12 +8,6 @@ import { TiSocialLinkedinCircular } from "react-icons/ti";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { IoLogoBehance } from "react-icons/io5";
 
-// Images
-import sope1 from "../assets/sope-pics/sope-1.png";
-import sope2 from "../assets/sope-pics/sope-2.png";
-import sope3 from "../assets/sope-pics/sope-3.png";
-import sope4 from "../assets/sope-pics/sope-4.png";
-
 import translations from "../utils/translations.js";
 import fonts from "../utils/fonts.js";
 import MobileMenu from "./MobileMenu.jsx";
@@ -36,12 +30,12 @@ export default function NavDetailsLinks() {
             {sope[dataIndex].title}
           </h4>
           <p className={`${fonts.eduTitle}`}>
-            <em className="font-bold text-[color:var(--white-color)]">Msc</em>{" "}
-            Project Management - (Nov 2023 - Sep 2025)
+            <em className="font-bold text-[color:var(--white-color)]">{language === "Japanese" ? "修士" : "Msc"}</em>{" "}
+            {language === "Japanese" ? "（プロジェクトマネジメント）― 2023年11月～2025年9月" : "Project Management - (Nov 2023 - Sep 2025)"}
           </p>
           <p className={`${fonts.eduTitle}`}>
-            <em className="font-bold text-[color:var(--white-color)]">Bsc</em>{" "}
-            Information and Communication Science - (Nov 2017 - Dec 2022)
+            <em className="font-bold text-[color:var(--white-color)]">{language === "Japanese" ? "学士" : "Bsc"}</em>{" "}
+            {language === "Japanese" ? "（情報コミュニケーション科学）― 2017年11月～2022年12月" : "Information and Communication Science - (Nov 2017 - Dec 2022)"}
           </p>
         </div>
         <MobileMenu />

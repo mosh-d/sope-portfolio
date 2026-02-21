@@ -37,10 +37,10 @@ export default function MobileMenu() {
   };
 
   const navItems = [
-    ["about", t.about],
+    ["projects", t.projects],
     ["experience", t.experience],
     ["skills", t.skills],
-    ["projects", t.projects],
+    ["about", t.about],
   ];
 
   return (

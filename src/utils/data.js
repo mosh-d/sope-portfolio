@@ -293,7 +293,7 @@ const sope = [
         title: "Five Clover Hotel Company Website (front end)",
         logo: ["next", "css", "javaScript", "git"],
         image: "e_fiveCloverGroup",
-        url: "https://www.thecordishotelikeja.com/",
+        url: "https://www.fivecloverhotels.com/",
       },
       {
         title: "Five Clover Branch Hotel Website (full stack)",

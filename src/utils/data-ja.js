@@ -309,7 +309,7 @@ const sopeJa = [
           "git",
         ],
         image: "e_fiveClover",
-        url: "https://fivecloverilupeju.fivecloverhotels.com/",
+        url: "https://fivecloverhotels.com/",
       },
       {
         title: "Totesphere Partnershipsウェブサイト（フロントエンド）",

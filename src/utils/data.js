@@ -32,7 +32,7 @@ const sope = [
       },
       {
         duration: "May 2025 - Present",
-        title: "Lead Software Engineer at Five Clover",
+        title: "Software Engineer at Five Clover Hotels Group",
         descriptionPoints: [
           "Audited the old company website to pinpoint focus areas that needed to be improved (including layout, color usage, typography, image loading, and other performance metrics) and designed mockups for a new, modern, dynamic website for the Five Clover hotel management company.",
           "Developed mockups into a high-fidelity prototype for the Five Clover website.",
@@ -57,7 +57,7 @@ const sope = [
         ],
       },
       {
-        duration: "Jun 2024 - Sep 2025",
+        duration: "Jun 2024 - Jan 2026",
         title:
           "Lead Front-end Engineer at Totesphere (Part-time from May 2025)",
         descriptionPoints: [
@@ -184,50 +184,78 @@ const sope = [
     about6: "I don’t just build features, I build systems that are dependable, scalable, and aligned with business goals.",
     experience: [
       {
-        duration: "May 2025 - Present",
-        title: "Lead Software Engineer at Five Clover",
+        duration: "Aug 2026 - Present",
+        title: "Founder & Lead Engineer at OrdaBook (Ordabook Technology Services)",
         descriptionPoints: [
-          "Audited the old company website to pinpoint focus areas that needed to be improved (including layout, color usage, typography, image loading, and other performance metrics) and designed mockups for a new, modern, dynamic website for the Five Clover hotel management company.",
-          "Developed mockups into a high-fidelity prototype for the Five Clover website.",
-          "Presented the new design to key stakeholders, got feedback, and implemented corrections where necessary.",
-          "Developed the new hotel website frontends using React and tailwind CSS for fast, component-based Single Page Applications (SPAs) and established a strong CSS codebase accommodating the robust and unique design system of the websites and brand.",
-          "Designed the backend architecture and hosting structure to accommodate the various websites that would be built for each hotel branch.",
-          "Setup a multi-tenant postgreSQL database and a robust backend API to handle room inventory and reservation logic based on business requirements (a single backend API serving multiple hotel branch frontends based on branch IDs).",
+          "ordabook.com: an order-management app for custom-order businesses (tailors, caterers, cake makers and 17 other trades) that works offline on any phone, in English, Yorùbá, Hausa, Igbo and Tiv.",
+          "Requirements and delivery: Wrote the product specification (228 tracked requirements), decision log and release plan across 23 delivery phases. Used AI coding agents for most of the code, for speed and efficiency, and reviewed every change myself (840+ commits); handled all server setup and infrastructure work by hand.",
+          "Product decisions: Turned shop-owner interviews into the first priorities: staff pay tied to approved work, and visibility of tailors working remotely. Defined three plans (Solo free, Team ₦5,000, Studio ₦15,000 a month) mapped to user personas, launched tailoring-first with starter setups for 20 trades, and redesigned everyday tasks to be faster than the paper notebook.",
+          "Platform: Built an installable web app (Next.js PWA) that works without a signal and syncs when back online, a TypeScript REST API (Fastify, 270 endpoints), and a PostgreSQL database whose row-level security keeps each business's data separate across about 97 tables.",
+          "Integrations and payments: Integrated Paystack payments with webhooks, Resend email with daily and monthly quota guards, Cloudflare R2 storage with signed links, and WhatsApp tracking links. Built an append-only payment ledger with idempotent writes, so retries never record a payment twice and balances reconcile.",
+          "Hosting, monitoring and backups: Built the production server on an Ubuntu 24.04 VPS (systemd, Cloudflare Tunnel, SSH hardening, fail2ban) with deploys that roll back on a failed health check. A 5-minute watch alerts on disk, memory, CPU, database and service failures (Healthchecks.io, Better Stack) against a 99.5% uptime target. Point-in-time recovery caps data loss at 5 minutes, with encrypted nightly backups and monthly restore rehearsals.",
+          "Testing and release quality: Every release must pass unit, API integration, end-to-end and offline regression tests (Vitest, Playwright), plus scans for leaked secrets, vulnerable dependencies and licences, before it can ship.",
+          "Performance: Load-tested the API, then cut the server cost of a typical shop's home-screen refresh by about 80%, raising capacity about 5x on the same infrastructure.",
+          "Security and reliability audit: Ran a 119-point audit and resolved 97 findings, including both critical and 23 of 26 high-severity issues (an account-takeover path, upload abuse, missing rate limits and usage quotas).",
+          "Documentation and support: Wrote the operations manual, incident runbooks and customer help centre. Set up the support inbox and admin back office, and run the OrdaBook Instagram page ahead of launch marketing.",
         ],
         tags: [
-          "CSS",
-          "React",
-          "tailwind",
+          "Next.js",
+          "TypeScript",
+          "Fastify",
           "PostgreSQL",
-          "Node.js",
-          "Express.js",
+          "Paystack",
+          "Resend",
+          "Cloudflare",
+          "Ubuntu Linux",
+          "Vitest",
+          "Playwright",
         ],
       },
       {
-        duration: "Jun 2024 - Sep 2025",
+        duration: "May 2025 - Present",
+        title: "Software Engineer at Five Clover Hotels Group",
+        descriptionPoints: [
+          "Built and delivered the group's property management system (NestJS, PostgreSQL): front office, housekeeping, food and beverage, and accounting for each branch, plus head-office and HR operations with access across every branch.",
+          "Sole developer and technical owner of 13 hotel branch websites across 4 brands and the central booking API behind them, handling releases, bug fixes, hosting and domain administration.",
+          "Manage the group's web and email infrastructure: Cloudflare DNS, cPanel hosting and mailboxes, and email authentication (MX, SPF, DKIM, DMARC). Moved reservation-confirmation emails to Resend after the previous provider suspended the account, and consolidated hosting and staff email under fivecloverhotels.com.",
+          "Redesigned the group website: audited the old sites, prototyped and presented replacements to stakeholders, then rebuilt it in React and Tailwind.",
+          "Built a central booking API (Node.js, Express) serving every branch website, with PostgreSQL transactions that prevent double-bookings and data scoped to each branch.",
+        ],
+        tags: [
+          "NestJS",
+          "Node.js",
+          "Express.js",
+          "PostgreSQL",
+          "React",
+          "Tailwind",
+          "Cloudflare",
+          "cPanel",
+          "Resend",
+        ],
+      },
+      {
+        duration: "Jun 2024 - Jan 2026",
         title:
           "Lead Front-end Engineer at Totesphere (Part-time from May 2025)",
         descriptionPoints: [
-          "Designed a high-fidelity, dynamic, and intuitive prototype for the Totesphere website (a website dedicated to providing grants for startup businesses) using Figma. Focused on maintaining brand identity while crafting interactive components that fell in line with color theory and design principles.",
-          "Continued to bring the website design to life with HTML, CSS, and JavaScript. Added dynamic components with the aid of event listeners, url manipulation, and other intuitive functions and methods.",
-          "Implemented API request for Google map data.",
-          "Optimized page loading, leading to an average load time of 2 seconds, down 50% from 4 seconds.",
+          "Designed a high-fidelity, interactive Figma prototype for Totesphere's startup-grants website, keeping to the brand identity, then built it with HTML, CSS, Scss and JavaScript.",
+          "Integrated the Google Maps API and cut average page load time by 50%, from 4 seconds to 2.",
         ],
-        tags: ["HTML", "CSS", "SCSS", "JavaScript"],
+        tags: ["HTML", "CSS", "SCSS", "JavaScript", "Google Maps API"],
       },
       {
         duration: "Sep 2022 - Jun 2023",
         title: "Software Engineer Trainee at ALX Africa",
         descriptionPoints: [
-          "Learned and applied various skills including Git bash, Linux Shell and C programming language to complete coding tasks.",
+          "Completed coding tasks in C on Linux, using the shell and Git day to day.",
         ],
-        tags: ["Git", "C", "bash", "devOps", "Linux OS"],
+        tags: ["Git", "C", "bash", "Linux OS"],
       },
       {
         duration: "Mar 2020 - Oct 2020",
-        title: "Web Developer Intern at MClord’s Mobile Solutions",
+        title: "Web Developer at MClord’s Mobile Solutions",
         descriptionPoints: [
-          "Designed and developed a responsive website for a local restaurant by leveraging HTML and CSS to create a visually appealing and user-friendly web interface. Ensured seamless functionality across various devices, including desktops, tablets, and mobile phones. Collaborated with cross-functional teams",
+          "Designed and built a responsive restaurant website in HTML and CSS that works on desktops, tablets and phones.",
         ],
         tags: ["HTML", "CSS"],
       },
@@ -283,6 +311,12 @@ const sope = [
       },
     ],
     projects: [
+      {
+        title: "OrdaBook: Order Book for Custom-Order Businesses (full stack)",
+        logo: ["react", "next", "tailwind", "postGres"],
+        image: "e_ordabook",
+        url: "https://ordabook.com/",
+      },
       {
         title: "Cordis Hotel Website (front end)",
         logo: ["react", "css", "javaScript", "git"],

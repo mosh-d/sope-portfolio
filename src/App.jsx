@@ -145,7 +145,9 @@ function App() {
                       : "transparent",
                 }}
               >
-                <span className={`${fonts.heroSmall} max-sm:text-[2rem]`}>\u65e5\u672c\u8a9e</span>
+                <span className={`${fonts.heroSmall} max-sm:text-[2rem]`}>
+                  {"\u65e5\u672c\u8a9e"}
+                </span>
               </button>
             </menu>
           </div>

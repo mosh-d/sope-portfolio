@@ -6,7 +6,7 @@ import sopeJa from "./utils/data-ja.js";
 import translations from "./utils/translations.js";
 import fonts from "./utils/fonts.js";
 import { RoleContext } from "./store/role-context.jsx";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { AnimatePresence } from "motion/react";
 
 // Components
@@ -33,6 +33,7 @@ function App() {
   const [language, setLanguage] = useState("English");
 
   const [hoveredSection, setHoveredSection] = useState(null);
+  const shouldReduceMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(
     () => window.matchMedia(MOBILE_QUERY).matches,
   );
@@ -66,7 +67,7 @@ function App() {
       if (scrollRef.current) {
         scrollRef.current.scrollTo({
           top: scrollRef.current.scrollHeight,
-          behavior: "smooth",
+          behavior: shouldReduceMotion ? "auto" : "smooth",
         });
       }
     }, 1500);
@@ -154,12 +155,12 @@ function App() {
           <div className="absolute inset-0 overflow-hidden w-full mt-[4rem]">
             <motion.h1
               className={`absolute z-10 mix-blend-difference whitespace-nowrap hidden max-md:block text-[4rem] text-white font-thin`}
-              initial={{ x: "100vw" }}
-              animate={{ x: "-100vw" }}
+              initial={{ x: shouldReduceMotion ? 0 : "100vw" }}
+              animate={{ x: shouldReduceMotion ? 0 : "-100vw" }}
               transition={{
-                repeat: Infinity,
+                repeat: shouldReduceMotion ? 0 : Infinity,
                 repeatType: "loop",
-                duration: 15,
+                duration: shouldReduceMotion ? 0 : 15,
                 ease: "linear",
               }}
             >
@@ -170,12 +171,12 @@ function App() {
             <div className="absolute inset-0 overflow-hidden w-full">
               <motion.h1
                 className={`${fonts.heroTitle} absolute z-10 mix-blend-difference whitespace-nowrap max-md:hidden`}
-                initial={{ x: "100vw" }}
-                animate={{ x: "-100vw" }}
+                initial={{ x: shouldReduceMotion ? 0 : "100vw" }}
+                animate={{ x: shouldReduceMotion ? 0 : "-100vw" }}
                 transition={{
-                  repeat: Infinity,
+                  repeat: shouldReduceMotion ? 0 : Infinity,
                   repeatType: "loop",
-                  duration: 15,
+                  duration: shouldReduceMotion ? 0 : 15,
                   ease: "linear",
                 }}
               >
@@ -221,11 +222,11 @@ function App() {
                       ? "blur(2px)"
                       : "blur(0px)",
                 }}
-                transition={{
-                  type: "tween",
-                  duration: 1.5,
-                  ease: "anticipate",
-                }}
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : { type: "tween", duration: 1.5, ease: "anticipate" }
+                }
                 style={{ transformOrigin: "left" }}
               >
                 <div className="inline-block  w-[35rem] mb-[20rem] max-md:mb-0">
@@ -291,11 +292,11 @@ function App() {
                       ? "blur(2px)"
                       : "blur(0px)",
                 }}
-                transition={{
-                  type: "tween",
-                  duration: 1.5,
-                  ease: "anticipate",
-                }}
+                transition={
+                  shouldReduceMotion
+                    ? { duration: 0 }
+                    : { type: "tween", duration: 1.5, ease: "anticipate" }
+                }
                 style={{ transformOrigin: "right" }}
               >
                 <div className="inline-block mt-[20rem] max-md:mt-0">
@@ -353,7 +354,7 @@ function App() {
           <main className="relative bg-cover bg-center bg-no-repeat p-[12rem] max-md:p-[4rem] max-lg:px-[4rem] max-sm:px-[2rem] h-[100vh] min-h-[80rem] overflow-hidden">
             <motion.div
               className="absolute left-[5rem] bottom-0 inset-0 bg-bottom bg-cover bg-no-repeat scale-[.7] max-lg:hidden"
-              initial={{ x: -50 }}
+              initial={{ x: shouldReduceMotion ? 0 : -50 }}
               animate={{ x: 0 }}
               style={{
                 backgroundImage: `url(${
@@ -393,14 +394,14 @@ function App() {
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={section}
-                      initial={{ opacity: 0, x: 100 }}
+                      initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 100 }}
                       animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 100 }}
-                      transition={{
-                        type: "spring",
-                        duration: 0.5,
-                        ease: "easeOut",
-                      }}
+                      exit={{ opacity: 0, x: shouldReduceMotion ? 0 : 100 }}
+                      transition={
+                        shouldReduceMotion
+                          ? { duration: 0 }
+                          : { type: "spring", duration: 0.5, ease: "easeOut" }
+                      }
                       className="h-full"
                     >
                       <SimpleBar style={{ maxHeight: "100%" }}>

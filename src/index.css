@@ -124,3 +124,17 @@ body {
 .simplebar-track.simplebar-horizontal.simplebar-visible {
   opacity: 1;
 }
+
+/* Respect the operating system's reduce-motion setting.
+   The framer-motion animations in App.jsx handle this via useReducedMotion;
+   this covers CSS transitions, animations and smooth scrolling. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

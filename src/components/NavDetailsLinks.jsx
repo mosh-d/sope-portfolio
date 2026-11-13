@@ -30,12 +30,20 @@ export default function NavDetailsLinks() {
             {sope[dataIndex].title}
           </h4>
           <p className={`${fonts.eduTitle}`}>
-            <em className="font-bold text-[color:var(--white-color)]">{language === "Japanese" ? "修士" : "Msc"}</em>{" "}
-            {language === "Japanese" ? "（プロジェクトマネジメント）― 2023年11月～2025年9月" : "Project Management - (Nov 2023 - Sep 2025)"}
+            <em className="font-bold text-[color:var(--white-color)]">
+              {language === "Japanese" ? "\u4fee\u58eb" : "Msc"}
+            </em>{" "}
+            {language === "Japanese"
+              ? "\uff08\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u30de\u30cd\u30b8\u30e1\u30f3\u30c8\uff09\u2014 2023\u5e7411\u6708\uff5e2025\u5e749\u6708"
+              : "Project Management - (Nov 2023 - Sep 2025)"}
           </p>
           <p className={`${fonts.eduTitle}`}>
-            <em className="font-bold text-[color:var(--white-color)]">{language === "Japanese" ? "学士" : "Bsc"}</em>{" "}
-            {language === "Japanese" ? "（情報コミュニケーション科学）― 2017年11月～2022年12月" : "Information and Communication Science - (Nov 2017 - Dec 2022)"}
+            <em className="font-bold text-[color:var(--white-color)]">
+              {language === "Japanese" ? "\u5b66\u58eb" : "Bsc"}
+            </em>{" "}
+            {language === "Japanese"
+              ? "\uff08\u60c5\u5831\u30b3\u30df\u30e5\u30cb\u30b1\u30fc\u30b7\u30e7\u30f3\u79d1\u5b66\uff09\u2014 2017\u5e7411\u6708\uff5e2022\u5e7412\u6708"
+              : "Information and Communication Science - (Nov 2017 - Dec 2022)"}
           </p>
         </div>
         <MobileMenu />
@@ -50,58 +58,74 @@ export default function NavDetailsLinks() {
           ].map(([key, label]) => (
             <motion.li
               key={key}
-              className="relative cursor-pointer w-fit pl-[1.2rem] py-[.2rem] pr-[4rem]"
-              onClick={() => setSection(key)}
+              className="relative w-fit"
               whileHover={{
                 backgroundColor: "hsla(338, 85%, 47%, .15)",
               }}
               transition={{ duration: 1, ease: "easeOut", type: "spring" }}
             >
-              {/* Active background */}
-              <motion.div
-                className="absolute inset-0 bg-[var(--emphasis-color)]"
-                initial={false}
-                animate={{
-                  opacity: section === key ? 1 : 0,
-                  scaleX: section === key ? 1 : 0,
-                }}
-                transition={{ duration: 0.7, ease: "easeOut", type: "spring" }}
-                style={{ originX: 0 }}
-              />
-
-              {/* Text */}
-              <span
-                className={`${fonts.mainContent} relative z-10`}
-                style={{
-                  color:
-                    section === key
-                      ? "var(--white-color)"
-                      : "var(--text-color)",
-                }}
+              <button
+                type="button"
+                onClick={() => setSection(key)}
+                aria-current={section === key}
+                className="relative cursor-pointer w-fit pl-[1.2rem] py-[.2rem] pr-[4rem]"
               >
-                {label}
-              </span>
+                {/* Active background */}
+                <motion.span
+                  className="absolute inset-0 bg-[var(--emphasis-color)]"
+                  initial={false}
+                  animate={{
+                    opacity: section === key ? 1 : 0,
+                    scaleX: section === key ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.7, ease: "easeOut", type: "spring" }}
+                  style={{ originX: 0 }}
+                />
+
+                {/* Text */}
+                <span
+                  className={`${fonts.mainContent} relative z-10`}
+                  style={{
+                    color:
+                      section === key
+                        ? "var(--white-color)"
+                        : "var(--text-color)",
+                  }}
+                >
+                  {label}
+                </span>
+              </button>
             </motion.li>
           ))}
         </ul>
       </nav>
       <ul className="flex gap-[4.8rem] items-center z-10">
         <motion.li
-          className="cursor-pointer inline-flex"
+          className="inline-flex"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
         >
-          <a href="https://github.com/mosh-d" target="blank">
+          <a
+            href="https://github.com/mosh-d"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub profile"
+          >
             <FaGithub size="3.5rem" color="var(--accent-color)" />
           </a>
         </motion.li>
 
         <motion.li
-          className="cursor-pointer inline-flex"
+          className="inline-flex"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
         >
-          <a href="https://www.linkedin.com/in/sope-azeez/" target="blank">
+          <a
+            href="https://www.linkedin.com/in/sope-azeez/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+          >
             <TiSocialLinkedinCircular
               size="4.5rem"
               color="var(--accent-color)"
@@ -110,24 +134,31 @@ export default function NavDetailsLinks() {
         </motion.li>
 
         <motion.li
-          className="cursor-pointer inline-flex"
+          className="inline-flex"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
         >
           <a
             href="https://wa.me/2348106125405?text=Hello%20I%20saw%20your%20portfolio%20online"
-            target="blank"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Message on WhatsApp"
           >
             <IoLogoWhatsapp size="3.5rem" color="var(--accent-color)" />
           </a>
         </motion.li>
 
         <motion.li
-          className="cursor-pointer inline-flex"
+          className="inline-flex"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
         >
-          <a href="https://www.behance.net/sopeazeez" target="blank">
+          <a
+            href="https://www.behance.net/sopeazeez"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Behance portfolio"
+          >
             <IoLogoBehance size="3.5rem" color="var(--accent-color)" />
           </a>
         </motion.li>

@@ -45,7 +45,13 @@ export default function MobileMenu() {
 
   return (
     <div className="hidden max-md:block">
-      <button onClick={toggleMenu} className="p-2 z-50 relative">
+      <button
+        type="button"
+        onClick={toggleMenu}
+        aria-label="Open menu"
+        aria-expanded={isOpen}
+        className="p-2 z-50 relative"
+      >
         <RxHamburgerMenu size="4.5rem" color="var(--emphasis-color)" />
       </button>
 
@@ -59,7 +65,9 @@ export default function MobileMenu() {
             className="fixed inset-0 bg-[var(--background-color)] z-[100] flex flex-col items-center justify-center"
           >
             <button
+              type="button"
               onClick={toggleMenu}
+              aria-label="Close menu"
               className="absolute top-10 right-10 p-2"
             >
               <IoClose size="4.5rem" color="var(--emphasis-color)" />
@@ -72,14 +80,15 @@ export default function MobileMenu() {
                     key={key}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => {
-                      setSection(key);
-                      setIsOpen(false);
-                    }}
-                    className="cursor-pointer"
                   >
-                    <span
-                      className={`${fonts.mainContent} text-[2.4rem]`}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSection(key);
+                        setIsOpen(false);
+                      }}
+                      aria-current={section === key}
+                      className={`${fonts.mainContent} text-[2.4rem] cursor-pointer`}
                       style={{
                         color:
                           section === key
@@ -88,7 +97,7 @@ export default function MobileMenu() {
                       }}
                     >
                       {label}
-                    </span>
+                    </button>
                   </motion.li>
                 ))}
               </ul>

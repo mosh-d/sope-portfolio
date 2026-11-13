@@ -25,33 +25,59 @@ import sope4 from "./assets/sope-pics/sope-4.png";
 // Icons
 import { GrLanguage } from "react-icons/gr";
 
+const MOBILE_QUERY = "(max-width: 767px)";
+
 function App() {
   const [role, setRole] = useState("");
-  console.log("Role: ", role);
   const [section, setSection] = useState("projects");
-  console.log("Section: ", section);
   const [language, setLanguage] = useState("English");
-  console.log("Language: ", language);
 
   const [hoveredSection, setHoveredSection] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(
+    () => window.matchMedia(MOBILE_QUERY).matches,
+  );
   const scrollRef = useRef(null);
+  const scrollTimerRef = useRef(null);
 
-  // Detect mobile screen size (max-md = < 768px)
+  // Track the mobile breakpoint without rendering the desktop layout first
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const query = window.matchMedia(MOBILE_QUERY);
+    const onChange = (event) => setIsMobile(event.matches);
 
-    // Check on mount
-    checkMobile();
+    setIsMobile(query.matches);
+    query.addEventListener("change", onChange);
 
-    // Add resize listener
-    window.addEventListener("resize", checkMobile);
-
-    // Cleanup
-    return () => window.removeEventListener("resize", checkMobile);
+    return () => query.removeEventListener("change", onChange);
   }, []);
+
+  // Clear any pending scroll when the component goes away
+  useEffect(() => {
+    return () => {
+      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+    };
+  }, []);
+
+  const chooseRole = (nextRole) => {
+    if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+
+    setRole(nextRole);
+    scrollTimerRef.current = setTimeout(() => {
+      scrollTimerRef.current = null;
+      if (scrollRef.current) {
+        scrollRef.current.scrollTo({
+          top: scrollRef.current.scrollHeight,
+          behavior: "smooth",
+        });
+      }
+    }, 1500);
+  };
+
+  const handleRoleKeyDown = (event, nextRole) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      chooseRole(nextRole);
+    }
+  };
 
   // Select data based on language
   const sope = useMemo(() => {
@@ -84,7 +110,7 @@ function App() {
     >
       <SimpleBar
         scrollableNodeProps={{ ref: scrollRef }}
-        style={{ maxHeight: "100vh" }}
+        style={{ maxHeight: "100dvh" }}
       >
         <div className="overflow-x-hidden">
           <div
@@ -94,7 +120,9 @@ function App() {
             <GrLanguage className="text-[2rem] max-sm:text-[3rem]" color="var(--emphasis-color)"  />
             <menu className="flex items-center gap-[.5rem] h-full mt-[.2rem]">
               <button
+                type="button"
                 onClick={() => setLanguage("English")}
+                aria-pressed={language === "English"}
                 className="text-[color:var(--emphasis-color)] cursor-pointer"
                 style={{
                   backgroundColor:
@@ -106,7 +134,9 @@ function App() {
                 <span className={`${fonts.heroSmall} max-sm:text-[2rem]`}>Eng</span>
               </button>
               <button
+                type="button"
                 onClick={() => setLanguage("Japanese")}
+                aria-pressed={language === "Japanese"}
                 className="text-[color:var(--emphasis-color)] cursor-pointer"
                 style={{
                   backgroundColor:
@@ -115,7 +145,7 @@ function App() {
                       : "transparent",
                 }}
               >
-                <span className={`${fonts.heroSmall} max-sm:text-[2rem]`}>日本語</span>
+                <span className={`${fonts.heroSmall} max-sm:text-[2rem]`}>\u65e5\u672c\u8a9e</span>
               </button>
             </menu>
           </div>
@@ -153,17 +183,12 @@ function App() {
             <div className="flex h-[100%] max-md:flex-col">
               {" "}
               <motion.section
-                onClick={() => {
-                  setRole("designer");
-                  setTimeout(() => {
-                    if (scrollRef.current) {
-                      scrollRef.current.scrollTo({
-                        top: scrollRef.current.scrollHeight,
-                        behavior: "smooth",
-                      });
-                    }
-                  }, 1500);
-                }}
+                role="button"
+                tabIndex={0}
+                aria-label="Explore the design portfolio"
+                aria-pressed={role === "designer"}
+                onClick={() => chooseRole("designer")}
+                onKeyDown={(event) => handleRoleKeyDown(event, "designer")}
                 onMouseEnter={() => setHoveredSection("designer")}
                 onMouseLeave={() => setHoveredSection(null)}
                 className={`w-[50%] max-md:w-full h-[100%] cursor-pointer p-[3rem] bg-[var(--white-color)] flex flex-col justify-center items-center`}
@@ -173,8 +198,7 @@ function App() {
                         height:
                           hoveredSection === "designer" || role === "designer"
                             ? "65%"
-                            : hoveredSection === "engineer" ||
-                                role === "engineer"
+                            : hoveredSection === "engineer" || role === "engineer"
                               ? "35%"
                               : "100%",
                         width: "100%",
@@ -183,8 +207,7 @@ function App() {
                         width:
                           hoveredSection === "designer" || role === "designer"
                             ? "65%"
-                            : hoveredSection === "engineer" ||
-                                role === "engineer"
+                            : hoveredSection === "engineer" || role === "engineer"
                               ? "35%"
                               : "50%",
                         height: "100%",
@@ -230,17 +253,12 @@ function App() {
                 </div>
               </motion.section>
               <motion.section
-                onClick={() => {
-                  setRole("engineer");
-                  setTimeout(() => {
-                    if (scrollRef.current) {
-                      scrollRef.current.scrollTo({
-                        top: scrollRef.current.scrollHeight,
-                        behavior: "smooth",
-                      });
-                    }
-                  }, 1500);
-                }}
+                role="button"
+                tabIndex={0}
+                aria-label="Explore the engineering portfolio"
+                aria-pressed={role === "engineer"}
+                onClick={() => chooseRole("engineer")}
+                onKeyDown={(event) => handleRoleKeyDown(event, "engineer")}
                 onMouseEnter={() => setHoveredSection("engineer")}
                 onMouseLeave={() => setHoveredSection(null)}
                 className={`w-[50%] max-md:w-full h-[100%] cursor-pointer flex flex-col justify-center items-center p-[3rem] bg-[var(--background-color-2)] text-[color:var(--white-color)]`}
@@ -250,8 +268,7 @@ function App() {
                         height:
                           hoveredSection === "engineer" || role === "engineer"
                             ? "65%"
-                            : hoveredSection === "designer" ||
-                                role === "designer"
+                            : hoveredSection === "designer" || role === "designer"
                               ? "35%"
                               : "100%",
                         width: "100%",
@@ -260,8 +277,7 @@ function App() {
                         width:
                           hoveredSection === "engineer" || role === "engineer"
                             ? "65%"
-                            : hoveredSection === "designer" ||
-                                role === "designer"
+                            : hoveredSection === "designer" || role === "designer"
                               ? "35%"
                               : "50%",
                         height: "100%",
@@ -283,7 +299,9 @@ function App() {
                 <div className="inline-block mt-[20rem] max-md:mt-0">
                   <h2
                     className={`${fonts.mainHeading} text-[color:var(--white-color)]`}
-                  >{`<${t.engineer} />`}</h2>
+                  >
+                    {`<${t.engineer} />`}
+                  </h2>
                   <div className={`${fonts.heroSmall} max-md:hidden`}>
                     <pre>
                       <code>
@@ -317,7 +335,7 @@ function App() {
                           {" "}
                           [
                         </span>
-                        Node.js, Express.js, MongoDb, PostgreSQL
+                        Node.js, Express.js, MongoDB, PostgreSQL
                         <span className="text-[color:var(--emphasis-color)]">
                           ]
                         </span>
@@ -333,7 +351,7 @@ function App() {
           <main className="relative bg-cover bg-center bg-no-repeat p-[12rem] max-md:p-[4rem] max-lg:px-[4rem] max-sm:px-[2rem] h-[100vh] min-h-[80rem] overflow-hidden">
             <motion.div
               className="absolute left-[5rem] bottom-0 inset-0 bg-bottom bg-cover bg-no-repeat scale-[.7] max-lg:hidden"
-              intial={{ x: -50 }}
+              initial={{ x: -50 }}
               animate={{ x: 0 }}
               style={{
                 backgroundImage: `url(${

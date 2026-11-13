@@ -7,7 +7,8 @@ const fonts = {
   roleTitle: "text-[2.2rem] font-accent",
   eduTitle: "text-[1.2rem] text-[color:var(--text-color)] italic",
   mainContent: "text-[1.6rem] text-[color:var(--text-color)]",
-  jobTitle: "text-[2.2rem] font-accent text-[color:var(--white-color)] font-bold",
+  jobTitle:
+    "text-[2.2rem] font-accent text-[color:var(--white-color)] font-bold",
 }
 
-export default fonts;
+export default fonts

@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { RoleContext } from "../../store/role-context.jsx";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import sope from "../../utils/data.js";
 import sopeJa from "../../utils/data-ja.js";
@@ -173,7 +173,7 @@ export default function ProjectsSection() {
         ? sopeJa[dataIndex].projects.map((project, index) => (
             <a
               href={project.url}
-              target="blank"
+              target="_blank"
               className="w-[70%] max-lg:w-[90%] max-sm:w-[95%]"
             >
               <motion.div
@@ -216,7 +216,7 @@ export default function ProjectsSection() {
         : sope[dataIndex].projects.map((project, index) => (
             <a
               href={project.url}
-              target="blank"
+              target="_blank"
               className="w-[70%] max-lg:w-[90%] max-sm:w-[95%]"
             >
               <motion.div

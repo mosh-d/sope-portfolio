@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { RoleContext } from "../store/role-context.jsx";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 import translations from "../utils/translations.js";
 import fonts from "../utils/fonts.js";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -9,6 +9,7 @@ import { IoClose } from "react-icons/io5";
 export default function MobileMenu() {
   const { section, setSection, language } = useContext(RoleContext);
   const [isOpen, setIsOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -18,21 +19,17 @@ export default function MobileMenu() {
   const menuVariants = {
     closed: {
       opacity: 0,
-      x: "100%",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
+      x: shouldReduceMotion ? 0 : "100%",
+      transition: shouldReduceMotion
+        ? { duration: 0 }
+        : { type: "spring", stiffness: 400, damping: 40 },
     },
     open: {
       opacity: 1,
       x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-      },
+      transition: shouldReduceMotion
+        ? { duration: 0 }
+        : { type: "spring", stiffness: 400, damping: 40 },
     },
   };
 
@@ -78,8 +75,8 @@ export default function MobileMenu() {
                 {navItems.map(([key, label]) => (
                   <motion.li
                     key={key}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={shouldReduceMotion ? undefined : { scale: 1.1 }}
+                    whileTap={shouldReduceMotion ? undefined : { scale: 0.95 }}
                   >
                     <button
                       type="button"

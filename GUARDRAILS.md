@@ -72,17 +72,69 @@ fix (Fonts): Closed the broken Tailwind arbitrary value in the education title
 - Every user-visible string lives in `data.js` and `data-ja.js` with matching keys, or
   in `translations.js` when it is UI chrome. No inline language ternaries in components.
 - An English content edit ships with the matching Japanese edit in the same change.
+- Never write Japanese (or any non-Latin text) as a bare `\uXXXX` escape inside JSX
+  **text** - JSX does not process backslash escapes, so it renders literally. Write the
+  real characters, or put the escape in a JS string: `{"\u65e5\u672c\u8a9e"}`.
+  Escapes inside a normal JS string literal (e.g. a ternary) are fine.
 
-## 7. Accessibility and performance floor
+## 7. Accessibility
 
-- Every interactive element is a `button` or an `a`, reachable by keyboard, with a
-  visible focus state.
+### Semantics and keyboard
+
+- Every interactive element is a real `<button>` or `<a>` - not a clickable `div`,
+  `li` or `section`.
+- If block-level content makes a real `<button>` unsafe (the hero role gates wrap a
+  `<pre><code>` block), use `role="button"` + `tabIndex={0}` + an `onKeyDown` handler
+  that responds to **both** Enter and Space, with `preventDefault()` on Space.
+- Every custom control needs an accessible name. If the visible label is not
+  descriptive enough, add `aria-label`.
+- Icon-only controls (hamburger, close, social links) always carry `aria-label`.
+
+### State must be announced, not just coloured
+
+- Toggle buttons expose state with `aria-pressed` (language: Eng / \u65e5\u672c\u8a9e).
+- Current section links expose `aria-current` (`MobileMenu`, `NavDetailsLinks`).
+- The menu button exposes `aria-expanded`.
+- Colour is never the only signal that something is active or selected.
+
+### Links
+
+- External links opening in a new tab use `target="_blank"` plus
+  `rel="noopener noreferrer"`. Never `target="blank"`.
+- Link text or `aria-label` says where the link goes, not "click here".
+
+### Motion
+
 - Respect `prefers-reduced-motion`.
-- Images carry alt text or are explicitly decorative, are served as WebP/AVIF at
-  sensible dimensions, and never exceed ~300 KB without approval.
-- No unused or duplicate assets committed.
+- Anything framer-motion drives reads `useReducedMotion()` from `motion/react` in that
+  component; the CSS-level fallback lives in the `index.css` media block.
+- The rule when reducing: **colour changes stay, movement goes.** An affordance or
+  state cue (hover tint, active highlight) must still be visible - it just switches
+  instantly instead of travelling or scaling.
+- Never leave an infinite animation (the marquee) running for a reduced-motion visitor.
 
-## 8. Change protocol
+### Text, zoom and focus
+
+- Do not disable zoom: no `user-scalable=no`, no `maximum-scale=1`.
+- Focus must stay visible. Do not remove an outline without replacing it.
+- Do not add further scaling that depends on mutating the root font size; the existing
+  `html { font-size: 62.5% }` + media-query approach is known debt (it overrides the
+  visitor's own font-size preference).
+
+### Images
+
+- An image carries `alt` text describing its content, or is explicitly decorative.
+- Project cards currently use `background-image`, so they carry no alt text at all.
+  If and when they become `<img>`, alt is required in the same change.
+
+## 8. Performance
+
+- No new image over ~300 KB without approval. Prefer WebP/AVIF.
+- No unused or duplicate assets committed.
+- Images that can lazy-load should; background images cannot.
+- One animation library, imported from `motion/react`.
+
+## 9. Change protocol
 
 - Allowed without asking: content edits, typo fixes, anything already recorded in the
   Decisions Log, local styling that matches section 3.
@@ -92,10 +144,15 @@ fix (Fonts): Closed the broken Tailwind arbitrary value in the education title
   was not viewed.
 - Files are written over the GitHub API, so the local working copy is stale until pulled.
   Say so in the message that accompanies a push.
+- A Vercel build passing proves the app compiles and bundles. It does **not** prove the
+  page looks right - verify visually before calling a UI change done.
 
-## 9. Decisions log
+## 10. Decisions log
 
 | Date | Rule | Reason |
 |------|------|--------|
 | 2026-11-13 | Baseline document created from a full repo audit | Initial index |
 | 2026-11-13 | Commit messages follow `type (Scope): Sentence` on one line | Requested directly |
+| 2026-11-14 | Accessibility section added: semantics, announced state, motion, focus, images | Rules established by the first audit pass |
+| 2026-11-14 | Reduced motion means "colour stays, movement goes" | Keeps every affordance while removing travel |
+| 2026-11-14 | Non-Latin text is never a bare JSX-text escape | The \u65e5\u672c\u8a9e label shipped as literal text |

@@ -38,8 +38,6 @@ import d_totesphere from "../../assets/designer-pics/totesphere.png";
 // Engineer Images
 import e_cordis from "../../assets/engineer-pics/cordis.png";
 import e_fiveCloverGroup from "../../assets/engineer-pics/fiveclovergroup.png";
-import e_fiveClover from "../../assets/engineer-pics/fiveclover.png";
-import e_totesphere from "../../assets/engineer-pics/totesphere.png";
 import e_ordabook from "../../assets/engineer-pics/ordabook.png";
 
 export default function ProjectsSection() {
@@ -161,8 +159,8 @@ export default function ProjectsSection() {
     d_motion,
     d_totesphere,
     e_cordis,
-    e_fiveClover,
-    e_totesphere,
+    e_fiveClover: d_fiveClover,
+    e_totesphere: d_totesphere,
     e_fiveCloverGroup,
     e_ordabook,
   };

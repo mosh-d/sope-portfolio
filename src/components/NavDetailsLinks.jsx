@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { RoleContext } from "../store/role-context.jsx";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 // Icons
 import { FaGithub } from "react-icons/fa";
@@ -15,6 +15,7 @@ import MobileMenu from "./MobileMenu.jsx";
 export default function NavDetailsLinks() {
   const { role, dataIndex, section, setSection, language, sope } =
     useContext(RoleContext);
+  const shouldReduceMotion = useReducedMotion();
 
   // Get translations based on language
   const t = language === "Japanese" ? translations.ja : translations.en;
@@ -62,7 +63,11 @@ export default function NavDetailsLinks() {
               whileHover={{
                 backgroundColor: "hsla(338, 85%, 47%, .15)",
               }}
-              transition={{ duration: 1, ease: "easeOut", type: "spring" }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0 }
+                  : { duration: 1, ease: "easeOut", type: "spring" }
+              }
             >
               <button
                 type="button"
@@ -78,7 +83,11 @@ export default function NavDetailsLinks() {
                     opacity: section === key ? 1 : 0,
                     scaleX: section === key ? 1 : 0,
                   }}
-                  transition={{ duration: 0.7, ease: "easeOut", type: "spring" }}
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0 }
+                      : { duration: 0.7, ease: "easeOut", type: "spring" }
+                  }
                   style={{ originX: 0 }}
                 />
 
@@ -102,8 +111,8 @@ export default function NavDetailsLinks() {
       <ul className="flex gap-[4.8rem] items-center z-10">
         <motion.li
           className="inline-flex"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={shouldReduceMotion ? undefined : { scale: 1.2 }}
+          whileTap={shouldReduceMotion ? undefined : { scale: 0.9 }}
         >
           <a
             href="https://github.com/mosh-d"
@@ -117,8 +126,8 @@ export default function NavDetailsLinks() {
 
         <motion.li
           className="inline-flex"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={shouldReduceMotion ? undefined : { scale: 1.2 }}
+          whileTap={shouldReduceMotion ? undefined : { scale: 0.9 }}
         >
           <a
             href="https://www.linkedin.com/in/sope-azeez/"
@@ -135,8 +144,8 @@ export default function NavDetailsLinks() {
 
         <motion.li
           className="inline-flex"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={shouldReduceMotion ? undefined : { scale: 1.2 }}
+          whileTap={shouldReduceMotion ? undefined : { scale: 0.9 }}
         >
           <a
             href="https://wa.me/2348106125405?text=Hello%20I%20saw%20your%20portfolio%20online"
@@ -150,8 +159,8 @@ export default function NavDetailsLinks() {
 
         <motion.li
           className="inline-flex"
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={shouldReduceMotion ? undefined : { scale: 1.2 }}
+          whileTap={shouldReduceMotion ? undefined : { scale: 0.9 }}
         >
           <a
             href="https://www.behance.net/sopeazeez"
